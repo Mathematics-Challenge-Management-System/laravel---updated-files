@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rejected_participant', function (Blueprint $table) {
-            $table->id();
+        Schema::create('admin', function (Blueprint $table) {
+            $table->unsignedBigInteger('admin_id');
+            $table->primary('admin_id'); 
             $table->string('fname', 25)->nullable();
             $table->string('lname', 25)->nullable();
             $table->string('email', 50)->unique();

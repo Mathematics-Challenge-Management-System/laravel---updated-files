@@ -1,45 +1,79 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Challenge;
 use App\Models\Question;
 use Illuminate\Http\Request;
-use PhpOffice\PhpSpreadsheet\IOFactory;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\QuestionImport;
+use App\Imports\AnswerImport;
+
+
+
+use Illuminate\Support\Facades\Validator;
+
 
 class QuestionController extends Controller
 {
     public function upload(Request $request)
     {
-        $request->validate([
-            'challenge_id' => 'required|exists:challenges,id',
-            'question_document' => 'required|file|mimes:xlsx,xls',
+        // ...
+        error_reporting(E_ALL);
+ini_set('display_errors', 1);
+        echo "Upload function called!";
+    
+        $questionFile = $request->file('question_document');
+        $answerFile = $request->file('answer_document');
+        $validator = Validator::make($request->all(), [
+            'question_document' => 'required|mimes:xlsx|max:1024',
+            'answer_document' => 'required|mimes:xlsx|max:1024',
         ]);
-
-        $challenge = Challenge::findOrFail($request->challenge_id);
-
-        // Process Excel file and create questions
-        $spreadsheet = IOFactory::load($request->file('question_document'));
-        $worksheet = $spreadsheet->getActiveSheet();
-
-        foreach ($worksheet->getRowIterator() as $row) {
-            $cellIterator = $row->getCellIterator();
-            $cellIterator->setIterateOnlyExistingCells(false);
-
-            $rowData = [];
-            foreach ($cellIterator as $cell) {
-                $rowData[] = $cell->getValue();
-            }
-
-            // Assuming the Excel has columns: question, answer, marks
-            Question::create([
-                'question' => $rowData[0],
-                'answer' => $rowData[1],
-                'marks' => $rowData[2] ?? 1,
-                'challenge_id' => $challenge->id,
-            ]);
+        
+        if ($validator->fails()) {
+            // Handle validation errors
+            return back()->withErrors($validator);
         }
+        // Import the Excel files
+        $questions = Excel::toCollection(new QuestionImport, $questionFile);
+        $answers = Excel::toCollection(new AnswerImport(new Question), $answerFile);
+    
+        
 
-        return redirect()->route('challenges-index')->with('success', 'Questions uploaded successfully!');
+
+
+
+$questionsArray = $questions->toArray()[0];
+$answersArray = $answers->toArray()[0];
+
+    
+        // Merge the questions and answers into a single array
+        
+
+        $mergedData = array();
+        foreach ($questionsArray as $key => $question) {
+            $answer = $answersArray[$key];
+            $mergedData[] = [$question, $answer];
+        }
+        
+        foreach ($mergedData as $data) {
+            $questionModel = new Question();
+            Question::create([
+                'question' => $data[0],
+                'answer' => $data[1],
+            ]);
+            $questionModel->save();
+        }
+    
+
+
+
+            
+    
+                
+
+        
+        return back()->with('success', 'Questions and answers uploaded successfully!');
+    
+        echo "Upload function called!";
     }
 }

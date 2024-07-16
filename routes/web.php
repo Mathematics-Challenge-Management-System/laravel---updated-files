@@ -55,9 +55,11 @@ Route::get('school', [ App\Http\Controllers\SchoolController::class, 'create'])-
 Route::post('school', [ App\Http\Controllers\SchoolController::class, 'store'])->name('school.store');
 
 
-// Main page route
+
 
 Route::get('/challenge-creation', [App\Http\Controllers\ChallengeController::class, 'create'])->name('challenges.create');
 Route::get('/challenge-index', [App\Http\Controllers\ChallengeController::class, 'index'])->name('challenges.index');
 Route::post('/challenge-creation', [App\Http\Controllers\ChallengeController::class, 'store'])->name('challenges.store');
-Route::post('/challenge-creation/upload', [App\Http\Controllers\ChallengeController::class, 'uploadQuestions'])->name('document.upload');
+
+Route::get('/questions-uploading', [App\Http\Controllers\QuestionController::class, 'uploadForm'])->name('questions.upload.form');
+Route::post('/questions-uploading', [App\Http\Controllers\QuestionController::class, 'upload'])->name('questions.upload');

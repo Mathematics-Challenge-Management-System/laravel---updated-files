@@ -5,7 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Challenge;
 use App\Models\Question;
 use Illuminate\Http\Request;
-use PhpOffice\PhpSpreadsheet\IOFactory;
+
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\QuestionsImport;
+use App\Imports\AnswersImport;
+
+
 
 class ChallengeController extends Controller
 {
@@ -90,4 +95,37 @@ class ChallengeController extends Controller
 
         return redirect()->route('challenges.index')->with('success', 'Questions uploaded successfully!');
     }
+  
+public function uploadExcel(Request $request)
+{
+    $request->validate([
+        'questions_document' => 'required|mimes:xlsx,xls',
+        'answers_document' => 'required|mimes:xlsx,xls',
+    ]);
+
+    try {
+        $questions = Excel::toCollection(new QuestionsImport, $request->file('questions_document'))->first();
+        $answers = Excel::toCollection(new AnswersImport, $request->file('answers_document'))->first();
+
+        // Process and merge the data
+        $this->processQuestionAnswers($questions, $answers);
+
+        return redirect()->back()->with('success', 'Excel files imported successfully.');
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Error importing files: ' . $e->getMessage());
+    }
+}
+
+private function processQuestionAnswers($questions, $answers)
+{
+    foreach ($questions as $index => $question) {
+        if (isset($answers[$index])) {
+            Question::create([
+                'question' => $question['question'],
+                'answer' => $answers[$index]['answer'],
+                'marks' => $answers[$index]['marks'],
+            ]);
+        }
+    }
+}
 }

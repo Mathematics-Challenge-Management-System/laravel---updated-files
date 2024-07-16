@@ -19,6 +19,7 @@ return new class extends Migration
             $challenge->string('challenge_description', 300)->nullable();
             $challenge->date('challenge_start_date');
             $challenge->date('challenge_end_date');
+            $challenge->integer('mark_for_answer')->nullable();
             $challenge->integer('wrong_answer_marks')->nullable();
             $challenge->integer('blank_answer_marks')->nullable();
             $challenge->integer('questions_to_answer')->nullable();

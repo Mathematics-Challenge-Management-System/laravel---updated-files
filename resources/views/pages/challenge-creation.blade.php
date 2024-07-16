@@ -47,17 +47,18 @@
     <!-- Document Upload Section -->
     <div class="document-upload">
         <h2>Question and Answer Document Upload</h2>
-        <form method="POST" action="{{ route('document.upload') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('questions.upload') }}" enctype="multipart/form-data">
             @csrf
+    
             <div class="form-group">
                 <label for="questionDocument">Question Document (Excel)</label>
-                <input type="file" id="questionDocument" name="question_document" required>
+                <input type="file" id="questionDocument" name="question_document" required  accept=".xlsx, .xls">
             </div>
             <div class="form-group">
                 <label for="answerDocument">Answer Document (Excel)</label>
-                <input type="file" id="answerDocument" name="answer_document" required>
+                <input type="file" id="answerDocument" name="answer_document" required  accept=".xlsx, .xls">
             </div>
-            <button type="submit" class="btn btn-primary">Upload Questions</button>
+            <button type="submit" class="btn btn-primary">Upload Questions and Answers</button>
         </form>
     </div>
 </div>

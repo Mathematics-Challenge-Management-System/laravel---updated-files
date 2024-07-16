@@ -9,7 +9,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Challenge List</title>
-    <!-- Add your CSS links here -->
+     <style>
+
+        table {
+            margin-left:280px;
+            border-collapse: collapse; 
+            width: 80%; 
+        }
+        
+        th, td {
+            border: 1px solid black; /
+            padding: 10px; 
+            text-align: 
+        }
+        
+        th {
+            background-color: #f0f0f0; 
+        }
+    </style>
+    
 </head>
 <body style="text-align:center;" >
     <h1>Challenges</h1>
@@ -32,8 +50,10 @@
                     <th>Name</th>
                     <th>description</th>
                     <th>Start Date</th>
-                    <th>Finish Date</th>
-                    <th>Mark for Answer</th>
+                    <th>End date</th>
+                    <th>Wrong Answer</th>
+                    <th>Blank Answer</th>
+                    <th>Questions to answer</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -41,13 +61,15 @@
                 <?php foreach($allChallenges as $challenge): ?>
                     <tr>
                         <td><?php echo $challenge->challenge_name; ?></td>
-                        <td><?php echo $challenge->challenge_id; ?></td>
+                        <td><?php echo $challenge->challenge_description; ?></td>
                         <td><?php echo $challenge->challenge_start_date; ?></td>
-                        <td><?php echo $challenge->challenge_date; ?></td>
-                        <td><?php echo $challenge->mark_for_answer;?>/td>
+                        <td><?php echo $challenge->challenge_end_date; ?></td>
+                        <td><?php echo $challenge->wrong_answer_marks;?></td>
+                        <td><?php echo  $challenge->blank_answer_marks;?></td>
+                        <td><?php echo $challenge->questions_to_answer;?></td>
+    
                         <td>
-                            <a href="<?php echo route('challenges.show', $challenge->id); ?>">View</a>
-                            <a href="<?php echo route('challenges.edit', $challenge->id); ?>">Edit</a>
+                            
                             <!-- Add a delete form here if needed -->
                         </td>
                     </tr>
