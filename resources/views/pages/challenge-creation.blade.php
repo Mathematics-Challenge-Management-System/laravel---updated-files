@@ -51,7 +51,7 @@
             @csrf
     
             <div class="form-group">
-                <label for="questionDocument">Question Document (Excel)</label>
+                <label for="">Question Document (Excel)</label>
                 <input type="file" id="questionDocument" name="question_document" required  accept=".xlsx, .xls">
             </div>
             <div class="form-group">

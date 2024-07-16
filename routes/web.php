@@ -63,3 +63,4 @@ Route::post('/challenge-creation', [App\Http\Controllers\ChallengeController::cl
 
 Route::get('/questions-uploading', [App\Http\Controllers\QuestionController::class, 'uploadForm'])->name('questions.upload.form');
 Route::post('/questions-uploading', [App\Http\Controllers\QuestionController::class, 'upload'])->name('questions.upload');
+Route::get('/guest', [App\Http\Controllers\GuestController::class, 'showGuestPage']);

@@ -95,7 +95,7 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div>
-                                                    <img src="/mathematicsimages/mbarara junior.jpeg" class="avatar avatar-sm me-3"
+                                                    <img src="/mathematicsimages/mbarara.jpeg" class="avatar avatar-sm me-3"
                                                         alt="mbarara junior school">
                                                 </div>
                                                 <div class="d-flex flex-column justify-content-center">
@@ -125,7 +125,7 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div>
-                                                    <img src="/mathematicsimages/badge_kamukanga.png" class="avatar avatar-sm me-3"
+                                                    <img src="/mathematicsimages/kamukanga.png" class="avatar avatar-sm me-3"
                                                         alt="schoolof Kamukanga">
                                                 </div>
                                                 <div class="d-flex flex-column justify-content-center">
@@ -185,7 +185,7 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div>
-                                                    <img src="/mathematicsimages/good samaritan junior school.jpg" class="avatar avatar-sm me-3"
+                                                    <img src="/mathematicsimages/samaritan.jpg" class="avatar avatar-sm me-3"
                                                         alt="school badge">
                                                 </div>
                                                 <div class="d-flex flex-column justify-content-center">
@@ -248,7 +248,7 @@
                                         <td>
                                             <div class="d-flex px-2">
                                                 <div>
-                                                    <img src="/mathematicsimages/New Stevenson Primary.jpeg"
+                                                    <img src="/mathematicsimages/stevenson.jpeg"
                                                         class="avatar avatar-sm rounded-circle me-2" alt="school badge">
                                                 </div>
                                                 <div class="my-auto">
@@ -285,7 +285,7 @@
                                         <td>
                                             <div class="d-flex px-2">
                                                 <div>
-                                                    <img src="/mathematicsimages/Oak international School.png"
+                                                    <img src="/mathematicsimages/interna.png"
                                                         class="avatar avatar-sm rounded-circle me-2" alt="school badge">
                                                 </div>
                                                 <div class="my-auto">
@@ -361,7 +361,7 @@
                                         <td>
                                             <div class="d-flex px-2">
                                                 <div>
-                                                    <img src="/mathematicsimages/TNGS.png"
+                                                    <img src="/mathematicsimages/north green.jpg"
                                                         class="avatar avatar-sm rounded-circle me-2" alt="school badge">
                                                 </div>
                                                 <div class="my-auto">
@@ -399,7 +399,7 @@
                                         <td>
                                             <div class="d-flex px-2">
                                                 <div>
-                                                    <img src="/mathematicsimages/Bulamu Primary School.png"
+                                                    <img src="/mathematicsimages/bulamu.jpg"
                                                         class="avatar avatar-sm rounded-circle me-2" alt="school badge">
                                                 </div>
                                                 <div class="my-auto">

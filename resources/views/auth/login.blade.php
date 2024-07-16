@@ -38,6 +38,7 @@
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0">Sign in</button>
                                         </div>
+                                        
                                     </form>
                                 </div>
                                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
@@ -52,9 +53,13 @@
                                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                                     <p class="mb-4 text-sm mx-auto"><b>
                                         Don't have an account?</b>
-                                        <a href="{{ route('register') }}" class="text-primary text-gradient font-weight-bold"><b>Sign up<b></a>
+                                        <a href="{{ route('register') }}" class="text-primary text-gradient font-weight-bold"><b>Reset password here<b></a>
                                     </p>
                                 </div>
+                                 <p class="mb-4 text-sm mx-auto"><b>
+                                        Here as a Guest</b>
+                                        <a href="{{ route('showGuestPage') }}" class="text-primary text-gradient font-weight-bold"><b>Guest View<b></a>
+                                    </p>
                             </div>
                         </div>
                         <div

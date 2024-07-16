@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('participant_answer', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('participant_challenge_id')->nullable();
-            $table->unsignedBigInteger('question_id')->nullable();
+            $table->string('question')->nullable();
             $table->integer('marks')->default(0);
             $table->string('answer', 50);
             $table->timestamps();

@@ -1,8 +1,7 @@
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
+@extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>
@@ -20,6 +19,7 @@
 </head>
 
 <body class="">
+@include('layouts.navbars.auth.topnav', ['title' => 'Dashboard'])
   <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
     <div class="container-fluid">
       <!-- Toggler -->
@@ -630,7 +630,7 @@
   <script src="guestcss/assets/js/plugins/chart.js/dist/Chart.extension.js"></script>
   <!--   Argon JS   -->
   <script src="guestcss/assets/js/argon-dashboard.min.js?v=1.1.2"></script>
-  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  
   <script>
     window.TrackJS &&
       TrackJS.install({

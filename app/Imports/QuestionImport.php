@@ -5,25 +5,20 @@ use Illuminate\Support\Collection;
 
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Illuminate\Support\Facades\Log;
 
-class QuestionImport implements ToCollection, WithHeadingRow
+
+class QuestionImport implements WithHeadingRow
 {
-    public function collection(Collection $rows)
-    {
-        // The collection will be handled in the controller
-        return $rows;
-    }
 
 
 
     public function model(array $row)
     {
+        Log::info('Processing row in QuestionImport: ' . json_encode($row));
         return new Question([
             'question' => $row['question'],
         ]);
     }
-    public function getQuestionIds()
-    {
-        return $this->questionIds;
-    }
+    
 }
