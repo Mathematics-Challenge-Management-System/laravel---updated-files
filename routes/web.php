@@ -38,7 +38,8 @@ use App\Http\Controllers\SchoolPerformanceController;
 
 //Route::resource('schools-performance', SchoolsController::class);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+//Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 	Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');

@@ -108,6 +108,10 @@
                             </tbody>
                         </table>
                     </div>
+                    <footer style="background-color: #f0f0f0; padding: 10px; text-align: center;">
+    <p>&copy; Mathematics challenge. All rights reserved.</p>
+</footer>
+
                 </div>
             </div>
         </div>

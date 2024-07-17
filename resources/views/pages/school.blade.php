@@ -4,6 +4,7 @@
     @include('layouts.navbars.auth.topnav', ['title' => 'Your school'])
     
     <div class="card shadow-lg mx-4 card-school-bottom">
+    <body style="background-image: url('/images/pupil 7 (2).jpg');">
         <div class="card-body p-3">
             <div class="row gx-4">
                 <div class="col-auto">
@@ -146,7 +147,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-md-4">
+            <!--<div class="col-md-4">
                 <div class="card card-school">
                     <img src="/img/bg-school.jpg" alt="Image placeholder" class="card-img-top">
                     <div class="row justify-content-center">
@@ -155,7 +156,7 @@
                                 <a href="javascript:;">
                                     <img src="/img/team-2.jpg"
                                         class="rounded-circle img-fluid border border-2 border-white">
-                                </a>
+                                </a>-->
                             </div>
                         </div>
                     </div>
@@ -164,6 +165,10 @@
                 </div>
             </div>
         </div>
-        @include('layouts.footers.auth.footer')
+        <footer style="background-color: #f0f0f0; padding: 10px; text-align: center;">
+    <p>&copy; Mathematics Challenge Competition. All rights reserved.</p>
+</footer>
+</body>
+
     </div>
 @endsection
