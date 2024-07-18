@@ -92,19 +92,11 @@
         .remember-me label {
             display: flex;
             align-items: center;
-        }r43reeeeerreerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr5rrr56rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr6r6r66r6r66rrrrrrrrrrr5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555
+        }
         .links a {
             color: #00BFFF;
             text-decoration: none;
         }
-        img {
-      position: absolute; /* Position the image absolutely */
-      top: 50%; /* Move the image 50% from the top */
-      left: 50%; /* Move the image 50% from the left */
-      transform: translate(-50%, -50%); /* Center the image horizontally and vertically */
-      width: 100px; /* Set the width of the image */
-      height: 100px; /* Set the height of the image */
-    }
     </style>
 </head>
 <body>
@@ -120,8 +112,8 @@
     <div class="container">
         <div class="header">Mathematics Challenge Competition</div>
         <div class="sub-header">Will make it easier to handle challenges.</div>
-        <div style="width: 400px">
-        <img src="/images/img 1.jpg" alt="Small Image">
+        <div style="width: 400px; height: 400px; background-image: url('/images/pupil.jpg'); background-size: cover;">
+  <img src="/images/img 1.jpg" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
 </div>
         <!--<div class="form-container">
             <input type="text" placeholder="Email or Username" class="input-field">

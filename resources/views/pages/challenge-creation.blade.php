@@ -1,7 +1,7 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 
-@include('layouts.navbars.auth.topnav', ['title' => 'Challenge Creation'])
+@include('layouts.navbars.auth.topnav', ['title' => 'Your school'])
 <div style="text-align:center;">
 
     <!-- Challenge Creation Section -->

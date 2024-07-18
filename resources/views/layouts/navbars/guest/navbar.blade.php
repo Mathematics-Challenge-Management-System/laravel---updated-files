@@ -33,9 +33,9 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link me-2" href="{{ route('login') }}">
-                                    <i class="fas fa-key opacity-6 text-dark me-1"></i>
-                                    Log In
+                                <a class="nav-link me-2" href="{{ route('schools-performance') }}">
+                                    <!--<i class="fas fa-key opacity-6 text-dark me-1"></i>-->
+                                    schools-performance
                                 </a>
                             </li>
                         </ul>

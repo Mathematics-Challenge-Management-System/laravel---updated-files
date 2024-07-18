@@ -25,22 +25,23 @@ use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword; 
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SchoolPerformanceController;
 
  
 
         
             
 
-Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
+Route::get('/', function () {return redirect('/guest');})->middleware('auth');
 // routes/web.php
 
-use App\Http\Controllers\SchoolPerformanceController;
+
 
 //Route::resource('schools-performance', SchoolsController::class);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 //Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-
+Route::get('/', [SchoolPerformanceController::class, 'vr']);
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 	Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
 	Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
