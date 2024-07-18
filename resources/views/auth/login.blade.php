@@ -58,7 +58,7 @@
                                 </div>
                                  <p class="mb-4 text-sm mx-auto"><b>
                                         Here as a Guest</b>
-                                        <a href="{{ route('showGuestPage') }}" class="text-primary text-gradient font-weight-bold"><b>Guest View<b></a>
+                                        <a href="{{ route('register') }}" class="text-primary text-gradient font-weight-bold"><b>Guest View<b></a>
                                     </p>
                             </div>
                         </div>
