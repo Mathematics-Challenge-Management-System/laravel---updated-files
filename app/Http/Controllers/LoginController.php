@@ -9,15 +9,24 @@ use Illuminate\Support\Facades\Password;
 
 class LoginController extends Controller
 {
+    protected $redirectTo = '/dashboard';
     /**
      * Display login page.
      *
      * @return Renderable
      */
+    
+    public function welcome(){
+        return view ('auth.welcome');
+     }
     public function show()
     {
         return view('auth.login');
     }
+    public function dashboard()
+{
+    return view('pages.dashboard');
+}
 
     public function login(Request $request)
     {
@@ -29,7 +38,7 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard');
+            return redirect()->route('home');
         }
 
         return back()->withErrors([

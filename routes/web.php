@@ -14,31 +14,31 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 
 use App\Http\Controllers\ResetPassword;
-use App\Http\Controllers\ChangePassword;   
+use App\Http\Controllers\ChangePassword;  
+
+
 
  
+Route::get('/', function () {return view ('auth.welcome');}); 
+Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
+Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->name('login.perform');
+Route::get('/home', [LoginController::class, 'dashboard'])->name('home');
 
-        
-            
-
-Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 	Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
-	Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
-	Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->name('login.perform');
-	Route::get('/reset-password', [ResetPassword::class, 'show'])->middleware('guest')->name('reset-password');
-	Route::post('/reset-password', [ResetPassword::class, 'send'])->middleware('guest')->name('reset.perform');
+	
+
+	Route::get('/reset-password', [ResetPassword::class, 'how'])->middleware('guest')->name('reset-password');
+	Route::post('/reset-password', [ResetPassword::class, 'end'])->middleware('guest')->name('reset.perform');
 	Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
 	Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
-	Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
+	
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 	Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
@@ -63,3 +63,5 @@ Route::post('/challenge-creation', [App\Http\Controllers\ChallengeController::cl
 
 Route::get('/questions-uploading', [App\Http\Controllers\QuestionController::class, 'uploadForm'])->name('questions.upload.form');
 Route::post('/questions-uploading', [App\Http\Controllers\QuestionController::class, 'upload'])->name('questions.upload');
+Route::get('/guest', [App\Http\Controllers\GuestController::class, 'showGuestPage'])->name('showGuestPage');
+
