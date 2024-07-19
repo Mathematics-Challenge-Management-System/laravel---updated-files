@@ -23,8 +23,8 @@ return new class extends Migration
             $table->integer('wrong_answer_marks')->nullable();
             $table->integer('blank_answer_marks')->nullable();
             $table->integer('questions_to_answer')->nullable();
-            $table->string('admin_id');
-            $table->foreign('admin_id')->references('id')->on('admin');
+            $table->unsignedBigInteger('admin_id');
+            $table->foreign('admin_id')->references('admin_id')->on('admin');
             $table->timestamps();
         });
     }

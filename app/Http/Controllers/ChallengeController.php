@@ -16,12 +16,12 @@ class ChallengeController extends Controller
 {
     public function create()
 {
-    
+
     $challenge = new Challenge(); // Create a new Challenge instance
-    
+
     return view('pages.challenge-creation', compact( 'challenge'));
 }
-    
+
         public function index()
         {
             $allChallenges = Challenge::all(); // Retrieve all challenges
@@ -38,7 +38,7 @@ class ChallengeController extends Controller
             'challenge_description' => 'required|string|max:20',
             'challenge_start_date' => 'required|date',
             'challenge_end_date' => 'required|date|after:start_date',
-        
+
         ]);
 
         $challenge = new Challenge();
@@ -49,16 +49,17 @@ class ChallengeController extends Controller
         $challenge->wrong_answer_marks=$request->input('wrong_answer_marks');
         $challenge->blank_answer_marks=$request->input('blank_answer_marks');
         $challenge->questions_to_answer=$request->input('questions_to_answer');
-    
+
         $challenge->save();
 
         return redirect()->route('challenges.create')->with('success', 'Challenge created successfully!');
-    
+
+
      }catch (\Exception $e) {
         \Log::error('Database error: ' . $e->getMessage());
         return back()->with('error', 'An error occurred while creating the challenge.');
     }
-      } 
+      }
 
 
 
@@ -95,7 +96,7 @@ class ChallengeController extends Controller
 
         return redirect()->route('challenges.index')->with('success', 'Questions uploaded successfully!');
     }
-  
+
 public function uploadExcel(Request $request)
 {
     $request->validate([

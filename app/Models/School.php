@@ -12,10 +12,10 @@ class School extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = 'school_representative';
-    protected $primaryKey = 'school_regNo';
-public $incrementing = false;
-protected $keyType = 'string';
-public $timestamps=false; 
+//    protected $primaryKey = 'school_regNo';
+//public $incrementing = false;
+//protected $keyType = 'string';
+//public $timestamps=false;
     /**
      * The attributes that are mass assignable.
      *
@@ -25,13 +25,12 @@ public $timestamps=false;
         'school_name',
         'school_regNo',
         'school_district',
-        'rep_fname',
-        'rep_lname',
+        'school_phone',
+        'rep_name',
+        'rep_username',
         'rep_email',
-        
-        
-        
-
+        'rep_phone',
+        'rep_password',
 
     ];
 

@@ -14,12 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('participant_answer', function (Blueprint $table) {
-            $table->id();
+            $table->id('participant_answer_id');
             $table->unsignedBigInteger('participant_challenge_id')->nullable();
-            $table->string('question')->nullable();
+            $table->unsignedBigInteger('question_id')->nullable();
             $table->integer('marks')->default(0);
             $table->string('answer', 50);
             $table->timestamps();
+            $table->foreign('participant_challenge_id')->references('participant_challenge_id')->on('participant_challenge');
+            $table->foreign('question_id')->references('question_id')->on('question');
         });
     }
 
