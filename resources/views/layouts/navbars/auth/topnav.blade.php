@@ -18,7 +18,7 @@
             <div class="nav-bar">
                 <div class="nav-links">
         
-                   <div class="get-started"> <a href="{{ route('virtual-reality') }}">virtual-reality</a></div>
+                   <div class="get-started"> <a href="{{ route('virtual-reality') }}"></a></div>
             </div>
             </div>
             <ul class="navbar-nav  justify-content-end">

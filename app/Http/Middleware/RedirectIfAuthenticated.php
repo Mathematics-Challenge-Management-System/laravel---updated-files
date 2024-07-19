@@ -20,13 +20,20 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next, ...$guards)
     {
         $guards = empty($guards) ? [null] : $guards;
-
+    
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                // Add an exception for the login page
+                if ($request->path() === 'login' || $request->path() === 'admin/login') {
+                    return $next($request);
+                }
+                if ($request->path() === 'register' || $request->path() === 'register/') {
+                    return $next($request);
+                }
+    
+                return redirect()->intended(route('home'));
             }
         }
-
         return $next($request);
     }
 }

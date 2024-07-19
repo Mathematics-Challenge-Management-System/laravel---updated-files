@@ -10,6 +10,7 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
+                                
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Student Rewards</p>
                                     <h5 class="font-weight-bolder">
                                         shs.3,000,000

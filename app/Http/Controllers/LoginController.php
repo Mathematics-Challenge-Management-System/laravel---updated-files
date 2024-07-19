@@ -29,23 +29,38 @@ class LoginController extends Controller
     return view('pages.dashboard');
 }
 
-    public function login(Request $request)
-    {
-        $credentials = $request->validate([
-            'Email' => ['required', 'Email'],
-            'Password' => ['required'],
-        ]);
+public function login(Request $request)
+{
+    $credentials = $request->validate([
+        'Email' => ['required', 'email'],
+        'Password' => ['required'],
+    ]);
 
-        if (Auth::guard('admin')->attempt($credentials)){
-            $request->session()->regenerate();
+    $credentials['Email'] = strtolower($credentials['Email']);
+    $credentials['Password'] = trim($credentials['Password']);
 
-            return redirect()->route('home');
-        }
+    \Log::info('Input credentials:', $credentials);
 
-        return back()->withErrors([
-            'Email' => 'The provided credentials do not match our records.',
+    $admin = Admin::where('Email', $credentials['Email'])->first();
+
+    if ($admin) {
+        \Log::info('Database credentials:', [
+            'Email' => $admin->Email,
+            'Password' => $admin->Password,
         ]);
     }
+
+    if (Auth::guard('admin')->attempt($credentials)) {
+        $request->session()->regenerate();
+
+        
+    }
+    return redirect()->route('home');
+
+    return back()->withErrors([
+        'Email' => 'The provided credentials do not match our records.',
+    ]);
+}
 
     public function logout(Request $request)
     {

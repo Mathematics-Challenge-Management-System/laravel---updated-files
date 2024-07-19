@@ -27,6 +27,6 @@ class RegisterController extends Controller
         $admin = Admin::create($attributes);
         Auth::login($admin);
 
-        return redirect('/dashboard');
+        return redirect('/home');
     }
 }
