@@ -30,6 +30,7 @@ Route::get('/', function () {return view ('auth.welcome');});
 Route::get('/dashboard', function () {
     return view('pages.dashboard');
 })->name('dashboard');
+Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->name('login.perform');
 Route::get('/home', [LoginController::class, 'dashboard'])->name('home');
@@ -44,7 +45,7 @@ Route::get('/home', [LoginController::class, 'dashboard'])->name('home');
 	Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
 	
 Route::group(['middleware' => 'auth.admin'], function () {
-	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
+	
 	Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
 	Route::get('/profile-static', [PageController::class, 'school'])->name('profile-static'); 
 	Route::get('/sign-in-static', [PageController::class, 'signin'])->name('sign-in-static');
