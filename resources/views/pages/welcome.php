@@ -102,16 +102,16 @@
 <body >
     <div class="nav-bar">
         <div class="nav-links">
-           <a href="#"></a>
-           <a class="nav-link  href="{{ route('welcome') }}">Login</a>
-            
-            <a href="#">dashboard</a>
-        </div>
-        <a href="#" class="get-started">Welcome!!</a>
+    
+           <div class="get-started"> <a  href="{{ route('login') }}">Login</a></div>
+           <div class="get-started"> <a  href="{{ route('dashboard') }}">dashboard</a></div>
+    </div>
+        <a href="{{ route('virtual-reality') }}" class="get-started">Analytics</a>
     </div>
     <div class="container">
-        <div class="header">Mathematics Challenge Competition</div>
-        <div class="sub-header">Will make it easier to handle challenges.</div>
+    <div class="header">THE</div>
+        <div class="header">MATHEMATICS CHALLENGE COMPETITION</div>
+        <div class="sub-header">NUMBERS DONT LIE!!.</div>
         <!--<div class="form-container">
             <input type="text" placeholder="Email or Username" class="input-field">
             <input type="password" placeholder="Password" class="input-field">
