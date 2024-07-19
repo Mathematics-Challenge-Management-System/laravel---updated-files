@@ -63,7 +63,7 @@ class RegistersUsersTest extends TestCase
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
+     * @return \App\Models\Adminn
      */
     protected function create(array $data)
     {

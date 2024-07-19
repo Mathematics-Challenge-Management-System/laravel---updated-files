@@ -26,8 +26,10 @@
                 <input type="date" id="finish_date" name="challenge_end_date" class="form-control" required>
             </div>
              <div class="form-group">
-                
+                 <label for="mark_for_answer">Duration:</label>
+                <input type="number" id="duration" name="duration" class="form-control  " required>
             </div>
+          
             <div class="form-group">
                 <label for="wrong_answer_marks">Wrong Answer Marks:</label>
                 <input type="number" id="wrong_answer_marks" name="wrong_answer_marks" class="form-control" required>

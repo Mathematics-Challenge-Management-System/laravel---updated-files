@@ -39,7 +39,7 @@ Route::get('/home', [LoginController::class, 'dashboard'])->name('home');
 	Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
 	Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
 	
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth.admin'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 	Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
 	Route::get('/profile-static', [PageController::class, 'school'])->name('profile-static'); 

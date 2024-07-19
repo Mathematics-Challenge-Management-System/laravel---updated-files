@@ -11,7 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 class School extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-    protected $table = 'schools';
+    protected $table = 'school_representative';
     protected $primaryKey = 'school_regNo';
 public $incrementing = false;
 protected $keyType = 'string';

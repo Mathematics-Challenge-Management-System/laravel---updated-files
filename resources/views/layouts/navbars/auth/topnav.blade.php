@@ -8,10 +8,10 @@
                 <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
                 <li class="breadcrumb-item text-sm text-white active" aria-current="page">{{ $title }}</li>
             </ol>
-            @if (Auth::check())
-            <h6 class="font-weight-bolder text-white mb-0">{{ $title }}</h6>
-            <h7 class="text-white">Welcome, {{Auth::user()->username}}</h7>
-            @endif
+          @if  (Auth::guard('admin')->check())
+    <h5 class="font-weight-bolder text-white mb-0">{{ $title }}</h5>
+    <h6 class="text-white">Welcome, {{ Auth::guard('admin')->user()->Fname }} {{ Auth::guard('admin')->user()->Lname }}</h6>
+@endif
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">

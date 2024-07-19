@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Password;
+use App\Models\Admin;
 
 class LoginController extends Controller
 {
@@ -13,7 +14,7 @@ class LoginController extends Controller
     /**
      * Display login page.
      *
-     * @return Renderable
+     * Renderable
      */
     
     public function welcome(){
@@ -31,24 +32,24 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+            'Email' => ['required', 'Email'],
+            'Password' => ['required'],
         ]);
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::guard('admin')->attempt($credentials)){
             $request->session()->regenerate();
 
             return redirect()->route('home');
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'Email' => 'The provided credentials do not match our records.',
         ]);
     }
 
     public function logout(Request $request)
     {
-        Auth::logout();
+        Auth::guard('admin')->logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();

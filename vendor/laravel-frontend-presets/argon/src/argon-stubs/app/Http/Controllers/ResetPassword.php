@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
-use App\Models\User;
+use App\Models\Admin;
 use App\Notifications\ForgotPassword;
 
 class ResetPassword extends Controller

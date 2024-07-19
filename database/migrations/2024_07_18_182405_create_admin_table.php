@@ -15,19 +15,16 @@ return new class extends Migration
     {
         Schema::create('admin', function (Blueprint $table) {
             $table->id('admin_id');
-            $table->primary('admin_id'); 
-            $table->string('fname', 25)->nullable();
-            $table->string('lname', 25)->nullable();
-            $table->string('email', 50)->unique();
-            $table->string('phone', 15)->nullable();
-            $table->string('schoolRegNo', 15)->unique();
-            $table->string('username', 55)->unique();
-            $table->string('password', 200)->nullable();
-            $table->date('dob')->nullable();
-            $table->string('image', 255)->nullable();
+        
+            $table->string('Fname', 25)->nullable();
+            $table->string('Lname', 25)->nullable();
+            $table->string('Email', 50)->unique();
+            $table->string('Phone', 15)->nullable();
+            $table->string('Password', 200)->nullable();
+          
             $table->timestamps();
         });
-
+       
     }
 
 

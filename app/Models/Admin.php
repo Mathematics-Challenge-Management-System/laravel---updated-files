@@ -8,8 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
+    use Notifiable;
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -17,17 +18,15 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table='admin';
+    protected $primaryKey = 'admin_id';
     protected $fillable = [
-        'username',
-        'firstname',
-        'lastname',
-        'email',
-        'password',
-        'address',
-        'city',
-        'country',
-        'postal',
-        'about'
+      
+        'Fname',
+        'Lname',
+        'Email',
+        'Password',
+     
     ];
 
     /**
@@ -36,7 +35,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
+        'Password',
         'remember_token',
     ];
 
@@ -57,6 +56,6 @@ class User extends Authenticatable
     */
     public function setPasswordAttribute($value)
     {
-        $this->attributes['password'] = bcrypt($value);
+        $this->attributes['Password'] = bcrypt($value);
     }
 }
