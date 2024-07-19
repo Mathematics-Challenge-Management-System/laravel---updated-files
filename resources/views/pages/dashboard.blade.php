@@ -114,7 +114,7 @@
                             <span class="font-weight-bold">4% more</span> in 2021
                         </p>
                     </div>
-                    <div class="card-body p-3">
+                   <div class="card-body p-3">
                         <div class="chart">
                             <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
                         </div>
@@ -175,7 +175,7 @@
                 <div class="card ">
                     <div class="card-header pb-0 p-3">
                         <div class="d-flex justify-content-between">
-                            <h6 class="mb-2">Participants overview</h6>
+                            <h6 class="mb-2">School Rankings In Districts</h6>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -196,13 +196,13 @@
                                     <td>
                                         <div class="text-center">
                                             <p class="text-xs font-weight-bold mb-0">Pupils:</p>
-                                            <h6 class="text-sm mb-0">2500</h6>
+                                            <h6 class="text-sm mb-0">25</h6>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="text-center">
                                             <p class="text-xs font-weight-bold mb-0">Schools:</p>
-                                            <h6 class="text-sm mb-0">230,900</h6>
+                                            <h6 class="text-sm mb-0">23</h6>
                                         </div>
                                     </td>
                                     <td class="align-middle text-sm">
@@ -227,13 +227,13 @@
                                     <td>
                                         <div class="text-center">
                                             <p class="text-xs font-weight-bold mb-0">Pupils:</p>
-                                            <h6 class="text-sm mb-0">3.900</h6>
+                                            <h6 class="text-sm mb-0">30</h6>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="text-center">
                                             <p class="text-xs font-weight-bold mb-0">Schools:</p>
-                                            <h6 class="text-sm mb-0">$440,000</h6>
+                                            <h6 class="text-sm mb-0">10</h6>
                                         </div>
                                     </td>
                                     <td class="align-middle text-sm">
@@ -258,13 +258,13 @@
                                     <td>
                                         <div class="text-center">
                                             <p class="text-xs font-weight-bold mb-0">Pupils:</p>
-                                            <h6 class="text-sm mb-0">1.400</h6>
+                                            <h6 class="text-sm mb-0">23</h6>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="text-center">
                                             <p class="text-xs font-weight-bold mb-0">Schools:</p>
-                                            <h6 class="text-sm mb-0">9,700</h6>
+                                            <h6 class="text-sm mb-0">12</h6>
                                         </div>
                                     </td>
                                     <td class="align-middle text-sm">
@@ -289,13 +289,13 @@
                                     <td>
                                         <div class="text-center">
                                             <p class="text-xs font-weight-bold mb-0">Pupils:</p>
-                                            <h6 class="text-sm mb-0">562</h6>
+                                            <h6 class="text-sm mb-0">15</h6>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="text-center">
                                             <p class="text-xs font-weight-bold mb-0">Schools:</p>
-                                            <h6 class="text-sm mb-0">$143,960</h6>
+                                            <h6 class="text-sm mb-0">143</h6>
                                         </div>
                                     </td>
                                     <td class="align-middle text-sm">
@@ -313,7 +313,7 @@
             <div class="col-lg-5">
                 <div class="card">
                     <div class="card-header pb-0 p-3">
-                        <h6 class="mb-0">Categories</h6>
+                        <h6 class="mb-0">About Us</h6>
                     </div>
                     <div class="card-body p-3">
                         <ul class="list-group">
@@ -323,9 +323,9 @@
                                         <i class="ni ni-mobile-button text-white opacity-10"></i>
                                     </div>
                                     <div class="d-flex flex-column">
-                                        <h6 class="mb-1 text-dark text-sm">Devices</h6>
-                                        <span class="text-xs">250 in stock, <span class="font-weight-bold">346+
-                                                sold</span></span>
+                                        <h6 class="mb-1 text-dark text-sm">Contact</h6>
+                                        <span class="text-xs">0771088845, <span class="font-weight-bold">0772449954
+                                                </span></span>
                                     </div>
                                 </div>
                                 <div class="d-flex">
@@ -340,9 +340,9 @@
                                         <i class="ni ni-tag text-white opacity-10"></i>
                                     </div>
                                     <div class="d-flex flex-column">
-                                        <h6 class="mb-1 text-dark text-sm">Tickets</h6>
-                                        <span class="text-xs">123 closed, <span class="font-weight-bold">15
-                                                open</span></span>
+                                        <h6 class="mb-1 text-dark text-sm">Location<n/h6>
+                                        <span class="text-xs">Twed Towers, <span class="font-weight-bold">Kampala
+                                                </span></span>
                                     </div>
                                 </div>
                                 <div class="d-flex">
@@ -389,7 +389,10 @@
                 </div>
             </div>
         </div>
-        @include('layouts.footers.auth.footer')
+        <footer style="background-color: #f0f0f0; padding: 10px; text-align: center;">
+    <p>&copy; Mathematics challenge. All rights reserved.</p>
+</footer>
+        <!--@include('layouts.footers.auth.footer')-->
     </div>
 @endsection
 

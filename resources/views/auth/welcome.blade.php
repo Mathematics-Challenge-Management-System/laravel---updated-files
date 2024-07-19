@@ -41,7 +41,7 @@
             font-size: 1em;
         }
         .get-started:hover {
-            background-color: white;
+            background-color: black;
             color: #7F00FF;
         }
         .container {
@@ -102,9 +102,9 @@
     <div class="nav-bar">
         <div class="nav-links">
         
-           <a href="{{ route('login') }}">Login</a>
+          <div class="get-started"> <a href="{{ route('login') }}">Login</a></div>
             
-            <a href="#">dashboard</a>
+           <div class="get-started" ><a href="{{ route('dashboard') }}">dashboard</a></div>
         </div>
         <a href="#" class="get-started">Welcome!!</a>
     </div>
