@@ -26,6 +26,10 @@ use App\Http\Controllers\ChangePassword;
 
  
 Route::get('/', function () {return view ('auth.welcome');}); 
+// web.php
+Route::get('/dashboard', function () {
+    return view('pages.dashboard');
+})->name('dashboard');
 Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->name('login.perform');
 Route::get('/home', [LoginController::class, 'dashboard'])->name('home');
