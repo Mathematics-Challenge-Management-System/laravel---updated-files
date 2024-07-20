@@ -14,12 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('question', function (Blueprint $table) {
-            $table->id();
+            $table->id('question_id');
             $table->string('question', 300);
             $table->string('answer', 50);
             $table->integer('marks')->default(1);
             $table->unsignedBigInteger('challenge_id')->nullable();
             $table->timestamps();
+            $table->foreign('challenge_id')->references('challenge_id')->on('challenge');
         });
     }
 
