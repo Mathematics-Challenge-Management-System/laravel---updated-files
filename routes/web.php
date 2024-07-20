@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,12 +21,15 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 
 use App\Http\Controllers\ResetPassword;
-use App\Http\Controllers\ChangePassword;  
+use App\Http\Controllers\ChangePassword;
+use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\ChallengeController;
 
 
 
- 
-Route::get('/', function () {return view ('auth.welcome');}); 
+
+
+Route::get('/', function () {return view ('auth.welcome');});
 // web.php
 Route::get('/dashboard', function () {
     return view('pages.dashboard');
@@ -37,24 +41,24 @@ Route::get('/home', [LoginController::class, 'dashboard'])->name('home');
 
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 	Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
-	
+
 
 	Route::get('/reset-password', [ResetPassword::class, 'how'])->middleware('guest')->name('reset-password');
 	Route::post('/reset-password', [ResetPassword::class, 'end'])->middleware('guest')->name('reset.perform');
 	Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
 	Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
-	
+
 Route::group(['middleware' => 'auth'], function () {
     // Admin routes here
 
         Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
-        Route::get('/profile-static', [PageController::class, 'school'])->name('profile-static'); 
+        Route::get('/profile-static', [PageController::class, 'school'])->name('profile-static');
         Route::get('/sign-in-static', [PageController::class, 'signin'])->name('sign-in-static');
-        Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static'); 
+        Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
         Route::get('/pages/{page}', [PageController::class, 'index'])->name('page');
         Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-    
+
 });
 
 //Posts endpoint
@@ -65,9 +69,9 @@ Route::post('school', [ App\Http\Controllers\SchoolController::class, 'store'])-
 
 
 
-Route::get('/challenge-creation', [App\Http\Controllers\ChallengeController::class, 'create'])->name('challenges.create');
-Route::get('/challenge-index', [App\Http\Controllers\ChallengeController::class, 'index'])->name('challenges.index');
-Route::post('/challenge-creation', [App\Http\Controllers\ChallengeController::class, 'store'])->name('challenges.store');
+Route::get('/challenge-creation', [ChallengeController::class, 'create'])->name('challenges.create');
+Route::get('/challenge-index', [ChallengeController::class, 'index'])->name('challenges.index');
+Route::post('/challenge-creation', [ChallengeController::class, 'store'])->name('challenges.store');
 
 Route::get('/questions-uploading', [App\Http\Controllers\QuestionController::class, 'uploadForm'])->name('questions.upload.form');
 Route::post('/questions-uploading', [App\Http\Controllers\ChallengeController::class, 'upload'])->name('questions.upload');
