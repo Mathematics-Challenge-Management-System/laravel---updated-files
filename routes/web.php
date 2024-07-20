@@ -70,4 +70,4 @@ Route::get('/challenge-index', [App\Http\Controllers\ChallengeController::class,
 Route::post('/challenge-creation', [App\Http\Controllers\ChallengeController::class, 'store'])->name('challenges.store');
 
 Route::get('/questions-uploading', [App\Http\Controllers\QuestionController::class, 'uploadForm'])->name('questions.upload.form');
-Route::post('/questions-uploading', [App\Http\Controllers\QuestionController::class, 'upload'])->name('questions.upload');
+Route::post('/questions-uploading', [App\Http\Controllers\ChallengeController::class, 'upload'])->name('questions.upload');

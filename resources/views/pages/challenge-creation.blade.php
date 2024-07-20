@@ -43,12 +43,7 @@
                 <input type="number" id="questions_to_answer" name="questions_to_answer" class="form-control" required>
             </div>
             <button type="submit" class="btn btn-primary">Create Challenge</button>
-        </form>
-    </div>
-
-    <!-- Document Upload Section -->
-    <div class="document-upload">
-        <h2>Question and Answer Document Upload</h2>
+    
         <form method="POST" action="{{ route('questions.upload') }}" enctype="multipart/form-data">
             @csrf
     
