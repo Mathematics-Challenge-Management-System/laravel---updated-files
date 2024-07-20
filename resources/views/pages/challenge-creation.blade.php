@@ -9,6 +9,7 @@
         <h2>Create a New Challenge</h2>
         <form method="POST" action="{{ route('challenges.store') }}" style="width: 60%; margin: 0 auto; padding: 20px; border: 1px solid #ddd; box-shadow: 0px 2px 5px rgba(0,0,0,0.1);">
             @csrf
+            <input type="hidden" name="admin_id" value="{{ Auth::id() }}">
             <div class="form-group">
                 <label for="name">Challenge Name:</label>
                 <input type="text" id="name" name="challenge_name" class="form-control" required>

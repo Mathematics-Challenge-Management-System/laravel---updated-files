@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 // use App\Http\Requests\RegisterRequest;
 
@@ -24,6 +25,8 @@ class RegisterController extends Controller
             'Password' => 'required|min:5|max:255',
             
         ]);
+        $attributes['Password'] = Hash::make($attributes['Password']);
+
         $admin = Admin::create($attributes);
         Auth::login($admin);
 

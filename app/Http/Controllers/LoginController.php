@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Password;
 use App\Models\Admin;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -49,14 +50,19 @@ public function login(Request $request)
             'Password' => $admin->Password,
         ]);
     }
+    
 
-    if (Auth::guard('admin')->attempt($credentials)) {
+    if (Hash::check($credentials['Password'], $admin->Password)) {
+        // Password is valid, log the user in
+        Auth::guard('admin')->login($admin);
         $request->session()->regenerate();
-
+        //...
+    
         
-    }
+    }else{
+    
     return redirect()->route('home');
-
+    }
     return back()->withErrors([
         'Email' => 'The provided credentials do not match our records.',
     ]);

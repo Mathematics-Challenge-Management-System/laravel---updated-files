@@ -37,7 +37,7 @@ Route::get('/dashboard', function () {
 Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->name('login.perform');
-Route::get('/home', [LoginController::class, 'dashboard'])->name('home');
+
 
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 	Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
@@ -48,22 +48,16 @@ Route::get('/home', [LoginController::class, 'dashboard'])->name('home');
 	Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
 	Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth:admin'], function () {
     // Admin routes here
+    Route::get('/home', [LoginController::class, 'dashboard'])->name('home');
 
         Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
         Route::get('/profile-static', [PageController::class, 'school'])->name('profile-static');
         Route::get('/sign-in-static', [PageController::class, 'signin'])->name('sign-in-static');
         Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
         Route::get('/pages/{page}', [PageController::class, 'index'])->name('page');
-        Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-
-
-});
-
-//Posts endpoint
-
-Route::get('school', [ App\Http\Controllers\SchoolController::class, 'create'])->name('school');
+        Route::get('school', [ App\Http\Controllers\SchoolController::class, 'create'])->name('school');
 Route::post('school', [ App\Http\Controllers\SchoolController::class, 'store'])->name('school.store');
 
 
@@ -75,3 +69,10 @@ Route::post('/challenge-creation', [ChallengeController::class, 'store'])->name(
 
 Route::get('/questions-uploading', [App\Http\Controllers\QuestionController::class, 'uploadForm'])->name('questions.upload.form');
 Route::post('/questions-uploading', [App\Http\Controllers\ChallengeController::class, 'upload'])->name('questions.upload');
+        Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+
+});
+
+
+

@@ -24,11 +24,11 @@
                                         @csrf
                                         @method('post')
                                         <div class="flex flex-col mb-3">
-                                            <input type="email" name="Email" class="form-control form-control-lg" value="{{ old('Email') ?? 'group4@gmail.com' }}" aria-label="Email">
+                                            <input type="email" name="Email" class="form-control form-control-lg" aria-label="Email">
                                             @error('Email') <p class="text-danger text-xs pt-1"> {{$message}} </p>@enderror
                                         </div>
                                         <div class="flex flex-col mb-3">
-                                            <input type="password" name="Password" class="form-control form-control-lg" aria-label="Password" value="secret" >
+                                            <input type="password" name="Password" class="form-control form-control-lg" aria-label="Password" >
                                             @error('Password') <p class="text-danger text-xs pt-1"> {{$message}} </p>@enderror
                                         </div>
                                         <div class="form-check form-switch">

@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Challenge;
 use App\Models\Question;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Models\Answer;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\QuestionsImport;
 use App\Imports\AnswersImport;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -16,7 +18,7 @@ class ChallengeController extends Controller
 {
     public function create()
 {
-
+    
     $challenge = new Challenge(); // Create a new Challenge instance
 
     return view('pages.challenge-creation', compact( 'challenge'));
@@ -32,8 +34,10 @@ class ChallengeController extends Controller
 
     public function store(Request $request)
     {
+        
    try {
         $validatedData = $request->validate([
+            'admin_id' => 'required|in:' . Auth::guard('admin')->id(),
             'challenge_name' => 'required|string|max:255',
             'challenge_description' => 'required|string|max:20',
             'challenge_start_date' => 'required|date',
@@ -42,10 +46,14 @@ class ChallengeController extends Controller
         ]);
 
         $challenge = new Challenge();
+        $challenge->admin_id = Auth::guard('admin')->id();
+       
+       
         $challenge->challenge_name = $request->input('challenge_name');
         $challenge->challenge_description = $request->input('challenge_description');
         $challenge->challenge_start_date = $request->input('challenge_start_date');
         $challenge->challenge_end_date = $request->input('challenge_end_date');
+        $challenge->duration = $request->input('duration');
         $challenge->wrong_answer_marks=$request->input('wrong_answer_marks');
         $challenge->blank_answer_marks=$request->input('blank_answer_marks');
         $challenge->questions_to_answer=$request->input('questions_to_answer');
