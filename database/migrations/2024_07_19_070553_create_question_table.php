@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('question', 300);
             $table->string('answer', 50);
             $table->integer('marks')->default(1);
-            $table->unsignedBigInteger('challenge_id')->nullable();
+            $table->unsignedBigInteger('challenge_id');
             $table->timestamps();
             $table->foreign('challenge_id')->references('challenge_id')->on('challenge');
         });

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('participant_challenge', function (Blueprint $table) {
             $table->id('participant_challenge_id');
-            $table->unsignedBigInteger('participant_id')->nullable();
-            $table->unsignedBigInteger('challenge_id')->nullable();
+            $table->unsignedBigInteger('participant_id');
+            $table->unsignedBigInteger('challenge_id');
             $table->integer('score')->default(0);
             $table->timestamp('start_time')->useCurrent();
             $table->timestamp('end_time')->useCurrentOnUpdate();
