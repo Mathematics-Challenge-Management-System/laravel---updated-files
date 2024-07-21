@@ -18,6 +18,7 @@ class QuestionImport implements WithHeadingRow
         Log::info('Processing row in QuestionImport: ' . json_encode($row));
         return new Question([
             'question' => $row['question'],
+            
         ]);
     }
     

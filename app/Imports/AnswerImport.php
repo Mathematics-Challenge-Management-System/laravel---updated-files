@@ -11,7 +11,7 @@ class AnswerImport implements ToModel, WithHeadingRow
 {
     public function model(array $row)
     {
-        $answer = Answer::where('question',$row['question'])->first();
+        $answer = Answer::where('question_id',$row['question'])->first();
         
         
             Log::info('Processing row: ' . json_encode($row));
@@ -21,6 +21,7 @@ class AnswerImport implements ToModel, WithHeadingRow
                     'question' => $row['question'],
                     'answer' => $row['answer'],
                     'marks' => $row['marks'],
+                    
                 ]);
             } catch (\Exception $e) {
                 Log::error('Error creating Question model: ' . $e->getMessage());

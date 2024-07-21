@@ -11,8 +11,13 @@ class Answer extends Model
     protected $table = 'participant_answer';
     protected $fillable = [
         
-        'question',
+        'question_id',
         'marks',
         'answer',];
 
+    
+    public function challenge()
+    {
+        return $this->belongsTo(Challenge::class);
     }
+}

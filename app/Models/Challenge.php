@@ -18,6 +18,15 @@ class Challenge extends Model
         'blank_answer_marks',
         'questions_to_answer',
     ];
+    public function questions()
+{
+    return $this->hasMany(Question::class);
+}
+
+public function answers()
+{
+    return $this->hasMany(Answer::class);
+}
 
     // Add any other necessary properties or relationships
 }

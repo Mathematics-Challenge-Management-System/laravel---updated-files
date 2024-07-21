@@ -8,9 +8,11 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Models\Answer;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\QuestionsImport;
-use App\Imports\AnswersImport;
+use App\Imports\QuestionImport;
+use App\Imports\AnswerImport;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -31,147 +33,94 @@ class ChallengeController extends Controller
         }
 
 
-
-    public function store(Request $request)
-    {
+        public function store(Request $request)
+        {
+            try {
+                $validatedData = $request->validate([
+                    'admin_id' => 'required|in:' . Auth::guard('admin')->id(),
+                    'challenge_name' => 'required|string|max:255',
+                    'challenge_description' => 'required|string|max:20',
+                    'challenge_start_date' => 'required|date',
+                    'challenge_end_date' => 'required|date|after:start_date',
+                    'duration' => 'required|integer',
+                    'wrong_answer_marks' => 'required|integer',
+                    'blank_answer_marks' => 'required|integer',
+                    'questions_to_answer' => 'required|integer',
+                  
+                   
+                ]);
         
-   try {
-        $validatedData = $request->validate([
-            'admin_id' => 'required|in:' . Auth::guard('admin')->id(),
-            'challenge_name' => 'required|string|max:255',
-            'challenge_description' => 'required|string|max:20',
-            'challenge_start_date' => 'required|date',
-            'challenge_end_date' => 'required|date|after:start_date',
-
-        ]);
-
-        $challenge = new Challenge();
-        $challenge->admin_id = Auth::guard('admin')->id();
-       
-       
-        $challenge->challenge_name = $request->input('challenge_name');
-        $challenge->challenge_description = $request->input('challenge_description');
-        $challenge->challenge_start_date = $request->input('challenge_start_date');
-        $challenge->challenge_end_date = $request->input('challenge_end_date');
-        $challenge->duration = $request->input('duration');
-        $challenge->wrong_answer_marks=$request->input('wrong_answer_marks');
-        $challenge->blank_answer_marks=$request->input('blank_answer_marks');
-        $challenge->questions_to_answer=$request->input('questions_to_answer');
-
-        $challenge->save();
-
-        return redirect()->route('challenges.create')->with('success', 'Challenge created successfully!');
-
-
-     }catch (\Exception $e) {
-        \Log::error('Database error: ' . $e->getMessage());
-        return back()->with('error', 'An error occurred while creating the challenge.');
-    }
-      }
-
-
-
-    public function uploadQuestions(Request $request)
-    {
-        $request->validate([
-            'challenge_description' => 'required|exists:challenges,id',
-            'question_document' => 'required|file|mimes:xlsx,xls',
-        ]);
-
-        $challenge = Challenge::findOrFail($request->challenge_id);
-
-        // Process Excel file and create questions
-        $spreadsheet = IOFactory::load($request->file('question_document'));
-        $worksheet = $spreadsheet->getActiveSheet();
-
-        foreach ($worksheet->getRowIterator() as $row) {
-            $cellIterator = $row->getCellIterator();
-            $cellIterator->setIterateOnlyExistingCells(false);
-
-            $rowData = [];
-            foreach ($cellIterator as $cell) {
-                $rowData[] = $cell->getValue();
+                $challenge = new Challenge();
+                $challenge->admin_id = Auth::guard('admin')->id();
+                
+        
+                $challenge->challenge_name = $request->input('challenge_name');
+                $challenge->challenge_description = $request->input('challenge_description');
+                $challenge->challenge_start_date = $request->input('challenge_start_date');
+                $challenge->challenge_end_date = $request->input('challenge_end_date');
+                $challenge->duration = $request->input('duration');
+                $challenge->wrong_answer_marks = $request->input('wrong_answer_marks');
+                $challenge->blank_answer_marks = $request->input('blank_answer_marks');
+                $challenge->questions_to_answer = $request->input('questions_to_answer');
+                $challenge->save();
+                $questions = $request->file('question_document');
+                $answers = $request->file('answer_document'); 
+               
+                $questionDocumentPath = $questions->store('challenges', 'public');
+                $challenge->question_document = $questionDocumentPath;
+        
+                // Store answer document
+                $answerDocumentPath = $answers->store('challenges', 'public');
+                $challenge->answer_document = $answerDocumentPath;
+        
+              
+                // Get the ID of the newly created challenge
+                $challengeId = $challenge->id;
+        
+                // Process and import questions and answers
+                DB::beginTransaction();
+                try {
+                   
+                    $questionDocument = $request->file('question_document');
+                    Excel::import(new QuestionImport($challenge->id), $questionDocument, null, \Maatwebsite\Excel\Excel::XLSX, [
+                        'chunk' => 1000
+                    ]);
+                
+                    // Upload and process the answer document
+                    $answerDocument = $request->file('answer_document');
+                    Excel::import(new AnswerImport($challenge->id), $answerDocument, null, \Maatwebsite\Excel\Excel::XLSX, [
+                        'chunk' => 1000
+                    ]);
+        
+                    // Associate questions and answers with the challenge
+                    $questions = Question::all();
+                    foreach ($questions as $question) {
+                        $question->challenge_id = $challengeId;
+                        $question->save();
+                    }
+        
+                    DB::commit();
+        
+                    // After successful import, check the count
+                    $questionCount = Question::where('challenge_id', $challengeId)->count();
+                    $answerCount = Answer::where('challenge_id', $challengeId)->count();
+                    Log::info("After import: {$questionCount} questions and {$answerCount} answers in database for challenge #{$challengeId}");
+        
+                    return back()->with('success', 'Challenge created and questions and answers uploaded successfully!');
+                } catch (\Exception $e) {
+                    DB::rollBack();
+                    Log::error('Import failed: ' . $e->getMessage());
+                }
+            } catch (\Illuminate\Validation\ValidationException $e) {
+                \Log::error('Database error: ' . $e->getMessage());
+                $errors = $e->validator->errors();
+                Log::error('Validation errors:', $errors->all());
+                return back()->with('error', 'An error occurred while creating the challenge.');
             }
-
-            // Assuming the Excel has columns: question, answer, marks
-            Question::create([
-                'question' => $rowData[0],
-                'answer' => $rowData[1],
-                'marks' => $rowData[2] ?? 1,
-                'challenge_description' => $challenge->id,
-            ]);
         }
-
-        return redirect()->route('challenges.index')->with('success', 'Questions uploaded successfully!');
-    }
-
-public function uploadExcel(Request $request)
-{
-    $request->validate([
-        'questions_document' => 'required|mimes:xlsx,xls',
-        'answers_document' => 'required|mimes:xlsx,xls',
-    ]);
-
-    try {
-        $questions = Excel::toCollection(new QuestionsImport, $request->file('questions_document'))->first();
-        $answers = Excel::toCollection(new AnswersImport, $request->file('answers_document'))->first();
-
-        // Process and merge the data
-        $this->processQuestionAnswers($questions, $answers);
-
-        return redirect()->back()->with('success', 'Excel files imported successfully.');
-    } catch (\Exception $e) {
-        return redirect()->back()->with('error', 'Error importing files: ' . $e->getMessage());
-    }
 }
+      
 
-private function processQuestionAnswers($questions, $answers)
-{
-    foreach ($questions as $index => $question) {
-        if (isset($answers[$index])) {
-            Question::create([
-                'question' => $question['question'],
-                'answer' => $answers[$index]['answer'],
-                'marks' => $answers[$index]['marks'],
-            ]);
-        }
-    }
-}
-public function upload(Request $request)
-{
+
+
     
-    $request->validate([
-
-    ]);
-
-    $questions = $request->file('question_document');
-    $answers =  $request->file('answer_document');
-
-    DB::beginTransaction();
-    try {
-        Excel::import(new QuestionImport, $questions);
-        Excel::import(new AnswerImport, $answers);
-        Excel::import(new QuestionImport, $questions, null, \Maatwebsite\Excel\Excel::XLSX, [
-            'chunk' => 1000
-            
-        ]);
-       
-        DB::commit();
-
-        
-        // After successful import, check the count
-        $questionCount = Question::count();
-        $answerCount = Answer::count();
-        Log::info("After import: {$questionCount} questions and {$answerCount} answers in database");
-
-        
-    
-    return back()->with('success', 'Questions and answers uploaded successfully!');
-
-    } catch (\Exception $e) {
-        DB::rollBack();
-        Log::error('Import failed: ' . $e->getMessage());
-    }
-    echo "Upload function called!";
-}
-}

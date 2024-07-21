@@ -7,7 +7,7 @@
     <!-- Challenge Creation Section -->
     <div class="create-challenge">
         <h2>Create a New Challenge</h2>
-        <form method="POST" action="{{ route('challenges.store') }}" style="width: 60%; margin: 0 auto; padding: 20px; border: 1px solid #ddd; box-shadow: 0px 2px 5px rgba(0,0,0,0.1);">
+        <form method="POST" action="{{ route('challenges.store') }}" style="width: 60%; margin: 0 auto; padding: 20px; border: 1px solid #ddd; box-shadow: 0px 2px 5px rgba(0,0,0,0.1);"enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="admin_id" value="{{ Auth::id() }}">
             <div class="form-group">
@@ -43,11 +43,8 @@
                 <label for="questions_to_answer">Questions to Answer:</label>
                 <input type="number" id="questions_to_answer" name="questions_to_answer" class="form-control" required>
             </div>
-            <button type="submit" class="btn btn-primary">Create Challenge</button>
-    
-        <form method="POST" action="{{ route('questions.upload') }}" enctype="multipart/form-data">
-            @csrf
-    
+           
+       
             <div class="form-group">
                 <label for="">Question Document (Excel)</label>
                 <input type="file" id="questionDocument" name="question_document" required  accept=".xlsx, .xls">
@@ -56,7 +53,9 @@
                 <label for="answerDocument">Answer Document (Excel)</label>
                 <input type="file" id="answerDocument" name="answer_document" required  accept=".xlsx, .xls">
             </div>
-            <button type="submit" class="btn btn-primary">Upload Questions and Answers</button>
+             <button type="submit" class="btn btn-primary">Create Challenge</button>
+    
+            
         </form>
     </div>
 </div>

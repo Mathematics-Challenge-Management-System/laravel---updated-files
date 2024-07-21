@@ -9,6 +9,7 @@ class Question extends Model
 {
     use HasFactory;
     protected $table = 'question';
+    protected $primaryKey = 'question_id';
     protected $fillable = [
         'question',
         'answer',
@@ -31,4 +32,5 @@ class Question extends Model
     {
         return $this->hasMany(Answer::class);
     }
+   
 }
