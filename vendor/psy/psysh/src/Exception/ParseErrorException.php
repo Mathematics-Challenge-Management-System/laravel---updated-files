@@ -41,6 +41,6 @@ class ParseErrorException extends \PhpParser\Error implements Exception
      */
     public static function fromParseError(\PhpParser\Error $e): self
     {
-        return new self($e->getRawMessage(), $e->getAttributes());
+        return new self($e->getRawMessage(),$e->getAttributes());
     }
 }

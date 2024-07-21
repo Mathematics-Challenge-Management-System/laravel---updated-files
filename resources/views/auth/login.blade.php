@@ -1,3 +1,7 @@
+<head>
+    <meta charset="UTF-8">
+    <!-- other meta tags and CSS/JS links -->
+</head>
 @extends('layouts.app')
 
 @section('content')
