@@ -6,10 +6,9 @@ use App\Models\Challenge;
 use App\Models\Question;
 use App\Models\Admin;
 use Illuminate\Http\Request;
-use App\Models\Answer;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\QuestionImport;
-use App\Imports\AnswerImport;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
@@ -88,7 +87,7 @@ class ChallengeController extends Controller
                 
                     // Upload and process the answer document
                     $answerDocument = $request->file('answer_document');
-                    Excel::import(new AnswerImport($challenge->id), $answerDocument, null, \Maatwebsite\Excel\Excel::XLSX, [
+                    Excel::import(new QuestionImport($challenge->id), $answerDocument, null, \Maatwebsite\Excel\Excel::XLSX, [
                         'chunk' => 1000
                     ]);
         
@@ -103,8 +102,8 @@ class ChallengeController extends Controller
         
                     // After successful import, check the count
                     $questionCount = Question::where('challenge_id', $challengeId)->count();
-                    $answerCount = Answer::where('challenge_id', $challengeId)->count();
-                    Log::info("After import: {$questionCount} questions and {$answerCount} answers in database for challenge #{$challengeId}");
+                  
+                    Log::info("After import: {$questionCount} questions and answers in database for challenge #{$challengeId}");
         
                     return back()->with('success', 'Challenge created and questions and answers uploaded successfully!');
                 } catch (\Exception $e) {
@@ -112,7 +111,7 @@ class ChallengeController extends Controller
                     Log::error('Import failed: ' . $e->getMessage());
                 }
             } catch (\Illuminate\Validation\ValidationException $e) {
-                \Log::error('Database error: ' . $e->getMessage());
+        
                 $errors = $e->validator->errors();
                 Log::error('Validation errors:', $errors->all());
                 return back()->with('error', 'An error occurred while creating the challenge.');

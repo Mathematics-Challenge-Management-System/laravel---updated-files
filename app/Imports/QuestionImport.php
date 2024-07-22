@@ -15,11 +15,19 @@ class QuestionImport implements WithHeadingRow
 
     public function model(array $row)
     {
+        $question = Question::where('question_id',$row['question'])->first();
+        
         Log::info('Processing row in QuestionImport: ' . json_encode($row));
-        return new Question([
-            'question' => $row['question'],
-            
-        ]);
+        try {
+            return new Question([
+                'question' => $row['question'],
+                'answer' => $row['answer'],
+                'marks' => $row['marks'],
+                
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Error creating Question model: ' . $e->getMessage());
     }
     
+}
 }
