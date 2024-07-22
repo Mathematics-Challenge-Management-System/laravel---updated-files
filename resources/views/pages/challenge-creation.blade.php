@@ -15,8 +15,8 @@
                 <input type="text" id="name" name="challenge_name" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="number">Challenge Number:</label>
-                <input type="number" id="number" name="challenge_description" class="form-control" required>
+                <label for="number">Challenge Description:</label>
+                <textarea id="description" name="challenge_description" class="form-control" required></textarea>
             </div>
             <div class="form-group">
                 <label for="start_date">Start Date:</label>
@@ -27,12 +27,13 @@
                 <input type="date" id="finish_date" name="challenge_end_date" class="form-control" required>
             </div>
              <div class="form-group">
-                 <label for="mark_for_answer">Duration:</label>
+                 <label for="mark_for_answer">Duration of attempt:</label>
                 <input type="number" id="duration" name="duration" class="form-control  " required>
             </div>
-          
+
             <div class="form-group">
                 <label for="wrong_answer_marks">Wrong Answer Marks:</label>
+                <p>Should either be negative or zero</p>
                 <input type="number" id="wrong_answer_marks" name="wrong_answer_marks" class="form-control" required>
             </div>
             <div class="form-group">
@@ -43,8 +44,8 @@
                 <label for="questions_to_answer">Questions to Answer:</label>
                 <input type="number" id="questions_to_answer" name="questions_to_answer" class="form-control" required>
             </div>
-           
-       
+
+
             <div class="form-group">
                 <label for="">Question Document (Excel)</label>
                 <input type="file" id="questionDocument" name="question_document" required  accept=".xlsx, .xls">
@@ -54,8 +55,12 @@
                 <input type="file" id="answerDocument" name="answer_document" required  accept=".xlsx, .xls">
             </div>
              <button type="submit" class="btn btn-primary">Create Challenge</button>
-    
-            
+
+
         </form>
-    </div>
+
+
+
 </div>
+</div>
+

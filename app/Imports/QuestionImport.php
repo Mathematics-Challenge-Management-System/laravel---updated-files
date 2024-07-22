@@ -1,33 +1,41 @@
 <?php
 namespace App\Imports;
+
 use App\Models\Question;
 use Illuminate\Support\Collection;
-
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Illuminate\Support\Facades\Log;
+use Maatwebsite\Excel\Facades\Excel;
 
-
-class QuestionImport implements WithHeadingRow
+class QuestionImport implements ToCollection, WithHeadingRow
 {
+protected $answers;
+protected $challenge_id;
+
+public function __construct($questionFilePath, $answersFilePath,$challenge_id)
+{
+$this->challenge_id = $challenge_id;
+// Read and store answers from the provided file
+$this->answers = Excel::toArray(null, $answersFilePath)[0];
+// Import questions
+Excel::import($this, $questionFilePath);
+}
+
+public function collection(Collection $rows)
+{
+foreach ($rows as $index => $row) {
+$answerData = $this->answers[$index] ?? null; // Match by index
 
 
-
-    public function model(array $row)
-    {
-        $question = Question::where('question_id',$row['question'])->first();
-        
-        Log::info('Processing row in QuestionImport: ' . json_encode($row));
-        try {
-            return new Question([
-                'question' => $row['question'],
-                'answer' => $row['answer'],
-                'marks' => $row['marks'],
-                
-            ]);
-        } catch (\Exception $e) {
-            Log::error('Error creating Question model: ' . $e->getMessage());
-    }
-    
+if ($answerData) {
+Question::create([
+'question' => $row['question'],
+'answer' => $answerData[0], // Assuming answer is in the second column
+'marks' => $answerData[1], // Assuming marks are in the third column
+// Include 'challenge_id' if required, ensure it's passed or available
+'challenge_id' => $this->challenge_id,
+]);
+}
+}
 }
 }

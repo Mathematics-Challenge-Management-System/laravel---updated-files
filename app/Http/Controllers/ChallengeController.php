@@ -19,7 +19,7 @@ class ChallengeController extends Controller
 {
     public function create()
 {
-    
+
     $challenge = new Challenge(); // Create a new Challenge instance
 
     return view('pages.challenge-creation', compact( 'challenge'));
@@ -45,14 +45,14 @@ class ChallengeController extends Controller
                     'wrong_answer_marks' => 'required|integer',
                     'blank_answer_marks' => 'required|integer',
                     'questions_to_answer' => 'required|integer',
-                  
-                   
+
+
                 ]);
-        
+
                 $challenge = new Challenge();
                 $challenge->admin_id = Auth::guard('admin')->id();
-                
-        
+
+
                 $challenge->challenge_name = $request->input('challenge_name');
                 $challenge->challenge_description = $request->input('challenge_description');
                 $challenge->challenge_start_date = $request->input('challenge_start_date');
@@ -63,63 +63,50 @@ class ChallengeController extends Controller
                 $challenge->questions_to_answer = $request->input('questions_to_answer');
                 $challenge->save();
                 $questions = $request->file('question_document');
-                $answers = $request->file('answer_document'); 
-               
+                $answers = $request->file('answer_document');
+
                 $questionDocumentPath = $questions->store('challenges', 'public');
                 $challenge->question_document = $questionDocumentPath;
-        
+
                 // Store answer document
                 $answerDocumentPath = $answers->store('challenges', 'public');
                 $challenge->answer_document = $answerDocumentPath;
-        
-              
+
+
                 // Get the ID of the newly created challenge
                 $challengeId = $challenge->id;
-        
+
                 // Process and import questions and answers
                 DB::beginTransaction();
                 try {
-                   
-                    $questionDocument = $request->file('question_document');
-                    Excel::import(new QuestionImport($challenge->id), $questionDocument, null, \Maatwebsite\Excel\Excel::XLSX, [
-                        'chunk' => 1000
-                    ]);
-                
-                    // Upload and process the answer document
-                    $answerDocument = $request->file('answer_document');
-                    Excel::import(new QuestionImport($challenge->id), $answerDocument, null, \Maatwebsite\Excel\Excel::XLSX, [
-                        'chunk' => 1000
-                    ]);
-        
-                    // Associate questions and answers with the challenge
-                    $questions = Question::all();
-                    foreach ($questions as $question) {
-                        $question->challenge_id = $challengeId;
-                        $question->save();
-                    }
-        
+
+                $questionImport=new QuestionImport($questions,$answers,$challengeId);
+
+
+
+
+
                     DB::commit();
-        
+
                     // After successful import, check the count
                     $questionCount = Question::where('challenge_id', $challengeId)->count();
-                  
+
                     Log::info("After import: {$questionCount} questions and answers in database for challenge #{$challengeId}");
-        
+
                     return back()->with('success', 'Challenge created and questions and answers uploaded successfully!');
                 } catch (\Exception $e) {
                     DB::rollBack();
                     Log::error('Import failed: ' . $e->getMessage());
                 }
             } catch (\Illuminate\Validation\ValidationException $e) {
-        
+
                 $errors = $e->validator->errors();
                 Log::error('Validation errors:', $errors->all());
                 return back()->with('error', 'An error occurred while creating the challenge.');
             }
         }
 }
-      
 
 
 
-    
+

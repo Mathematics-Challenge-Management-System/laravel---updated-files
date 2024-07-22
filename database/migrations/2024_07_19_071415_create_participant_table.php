@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('participant', function (Blueprint $table) {
             $table->id('participant_id');
-            $table->string('fname', 25)->nullable();
-            $table->string('lname', 25)->nullable();
-            $table->string('email', 50)->nullable();
-            $table->string('phone', 15)->nullable();
-            $table->string('schoolRegNo', 15)->unique();
-            $table->string('password', 255)->nullable();
+            $table->string('fname', 25);
+            $table->string('lname', 25);
+            $table->string('email', 50);
+            $table->string('phone', 15);
+            $table->string('schoolRegNo', 15);
+            $table->string('password', 255);
             $table->string('username', 55)->unique();
             $table->date('dob')->nullable();
-            $table->string('image', 255)->nullable();
+            $table->string('image', 255);
             $table->timestamps();
         });
     }
