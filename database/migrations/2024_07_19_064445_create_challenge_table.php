@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('blank_answer_marks')->nullable();
             $table->integer('questions_to_answer')->nullable();
             $table->unsignedBigInteger('admin_id');
-            $table->foreign('admin_id')->references('id')->on('admin');
+            $table->foreign('admin_id')->references('admin_id')->on('admin');
             $table->timestamps();
         });
     }
