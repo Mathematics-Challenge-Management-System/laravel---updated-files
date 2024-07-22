@@ -37,33 +37,34 @@ class SchoolController extends Controller
             ]);
 
 
-            try {
-                $school = new School();
 
-                $school->school_name = $validatedData['school_name'];
-                $school->school_regNo = $validatedData['school_regNo'];
-                $school->school_district = $validatedData['school_district'];
-                $school->school_phone = $validatedData['school_phone'];
-                $school->rep_name = $validatedData['rep_name'];
-                $school->rep_username = $validatedData['rep_username'];
-                $school->rep_email = $validatedData['rep_email'];
-                $school->rep_phone = $validatedData['rep_phone'];
-//                hsh the password with sha256 first
-                $validatedData['rep_password'] = hash('sha256', $validatedData['rep_password']);
-                $school->rep_password = $validatedData['rep_password'];
-
-                $school->save();
-
-                return back()->with('success', 'School created successfully!');
-            } catch (\Exception $e) {
-                \Log::error('Database error: ' . $e->getMessage());
-                return back()->with('error', 'An error occurred while creating the school.');
-            }
 
 
         } catch (\Exception $e) {
             \Log::error('Validation error: ' . $e->getMessage());
             return back()->with('error', 'An error occurred while validating the data.');
+        }
+        try {
+            $school = new School();
+
+            $school->school_name = $validatedData['school_name'];
+            $school->school_regNo = $validatedData['school_regNo'];
+            $school->school_district = $validatedData['school_district'];
+            $school->school_phone = $validatedData['school_phone'];
+            $school->rep_name = $validatedData['rep_name'];
+            $school->rep_username = $validatedData['rep_username'];
+            $school->rep_email = $validatedData['rep_email'];
+            $school->rep_phone = $validatedData['rep_phone'];
+//                hsh the password with sha256 first
+            $validatedData['rep_password'] = hash('sha256', $validatedData['rep_password']);
+            $school->rep_password = $validatedData['rep_password'];
+
+            $school->save();
+
+            return back()->with('success', 'School created successfully!');
+        } catch (\Exception $e) {
+            \Log::error('Database error: ' . $e->getMessage());
+            return back()->with('error', 'An error occurred while creating the school.');
         }
 
 
