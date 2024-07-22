@@ -4,7 +4,7 @@
     @include('layouts.navbars.auth.topnav', ['title' => 'Dashboard'])
     <div class="container-fluid py-4">
         <div class="row">
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+            <!--<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                 <div class="card">
                     <div class="card-body p-3">
                         <div class="row">
@@ -12,10 +12,10 @@
                                 <div class="numbers">
                                 
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Student Rewards</p>
-                                    <h5 class="font-weight-bolder">
-                                        shs.3,000,000
-                                    </h5>
-                                    <p class="mb-0">
+                                    <!--<h5 class="font-weight-bolder">
+                                        sh
+                                    </h5>-->
+                                    <!--<p class="mb-0">
                                         <span class="text-success text-sm font-weight-bolder">+55%</span>
                                         since yesterday
                                     </p>
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                 <div class="card">
                     <div class="card-body p-3">
@@ -63,10 +63,10 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">New Schools</p>
                                     <h5 class="font-weight-bolder">
-                                        +3,462
+                                        27
                                     </h5>
                                     <p class="mb-0">
-                                        <span class="text-danger text-sm font-weight-bolder">-2%</span>
+                                        <span class="text-danger text-sm font-weight-bolder">60%</span>
                                         since last month
                                     </p>
                                 </div>
@@ -109,10 +109,10 @@
             <div class="col-lg-7 mb-lg-0 mb-4">
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
-                        <h6 class="text-capitalize">Participants overview</h6>
+                        <h6 class="text-capitalize">Student Participation Graph</h6>
                         <p class="text-sm mb-0">
                             <i class="fa fa-arrow-up text-success"></i>
-                            <span class="font-weight-bold">4% more</span> in 2021
+                            <!--<span class="font-weight-bold">4% more</span> in 2021-->
                         </p>
                     </div>
                    <div class="card-body p-3">
@@ -412,7 +412,7 @@
             data: {
                 labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                 datasets: [{
-                    label: "Mobile apps",
+                    label: "Students",
                     tension: 0.4,
                     borderWidth: 0,
                     pointRadius: 0,
@@ -420,7 +420,7 @@
                     backgroundColor: gradientStroke1,
                     borderWidth: 3,
                     fill: true,
-                    data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                    data: [500, 200, 150, 300, 155, 185, 300, 400, 500],
                     maxBarThickness: 6
 
                 }],
