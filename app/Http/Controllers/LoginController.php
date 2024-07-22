@@ -8,6 +8,10 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Password;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+
 
 class LoginController extends Controller
 {
@@ -37,36 +41,34 @@ public function login(Request $request)
         'Password' => ['required'],
     ]);
 
-    $credentials['Email'] = strtolower($credentials['Email']);
-    $credentials['Password'] = trim($credentials['Password']);
-
-    \Log::info('Input credentials:', $credentials);
-
     $admin = Admin::where('Email', $credentials['Email'])->first();
 
     if ($admin) {
-        \Log::info('Database credentials:', [
-            'Email' => $admin->Email,
-            'Password' => $admin->Password,
-        ]);
-    }
-    
+        $inputPassword = $credentials['Password'];
+        $storedHash = $admin->Password;
 
-    if (Hash::check($credentials['Password'], $admin->Password)) {
-        // Password is valid, log the user in
-        Auth::guard('admin')->login($admin);
-        $request->session()->regenerate();
-        //...
-    
-        
-    }else{
-    
-    return redirect()->route('home');
+        Log::debug('Password check details', [
+            'input_password' => $inputPassword,
+            'input_password_length' => strlen($inputPassword),
+            'stored_hash' => $storedHash,
+            'hash_check_result' => Hash::check($inputPassword, $storedHash) ? 'true' : 'false',
+            'php_password_verify_result' => password_verify($inputPassword, $storedHash) ? 'true' : 'false'
+        ]);
+
+        if (Hash::check($inputPassword, $storedHash)) {
+            Auth::guard('admin')->login($admin);
+            $request->session()->regenerate();
+            return redirect()->intended(route('home'));
+        }
     }
+
     return back()->withErrors([
         'Email' => 'The provided credentials do not match our records.',
     ]);
 }
+
+   
+
 
     public function logout(Request $request)
     {

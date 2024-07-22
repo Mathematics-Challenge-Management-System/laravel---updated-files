@@ -14,8 +14,6 @@
                 <label for="name">Challenge Name:</label>
                 <input type="text" id="name" name="challenge_name" class="form-control" required>
             </div>
-
-
             <div class="form-group">
                 <label for="number">Challenge Description:</label>
                 <textarea id="description" name="challenge_description" class="form-control" required></textarea>
@@ -35,6 +33,7 @@
 
             <div class="form-group">
                 <label for="wrong_answer_marks">Wrong Answer Marks:</label>
+                <p>Should either be negative or zero</p>
                 <input type="number" id="wrong_answer_marks" name="wrong_answer_marks" class="form-control" required>
             </div>
             <div class="form-group">
@@ -59,5 +58,9 @@
 
 
         </form>
-    </div>
+
+
+
 </div>
+</div>
+

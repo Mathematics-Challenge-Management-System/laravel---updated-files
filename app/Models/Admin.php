@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Admin extends Authenticatable
 {
-    use Notifiable;
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -20,6 +20,8 @@ class Admin extends Authenticatable
      */
     protected $table='admin';
     protected $primaryKey = 'admin_id';
+    protected $guarded = ['id'];
+
     protected $fillable = [
       
         'Fname',
@@ -54,8 +56,17 @@ class Admin extends Authenticatable
      * @param $value
     * @return string
     */
-    public function setPasswordAttribute($value)
+    public function getAuthPassword()
     {
-        $this->attributes['Password'] = bcrypt($value);
+        return Hash::make($this->password, [
+            'memory' => 1024,
+            'time' => 2,
+            'threads' => 2,
+        ]);
     }
+    public function isAdmin()
+    {
+        return true; // Or any logic to determine if the user is an admin
+    }
+  
 }
