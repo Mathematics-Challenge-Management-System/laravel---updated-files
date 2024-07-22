@@ -4,7 +4,7 @@
     @include('layouts.navbars.auth.topnav', ['title' => 'Dashboard'])
     <div class="container-fluid py-4">
         <div class="row">
-            <!--<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                 <div class="card">
                     <div class="card-body p-3">
                         <div class="row">
@@ -15,7 +15,7 @@
                                     <!--<h5 class="font-weight-bolder">
                                         sh
                                     </h5>-->
-                                    <!--<p class="mb-0">
+                                    <p class="mb-0">
                                         <span class="text-success text-sm font-weight-bolder">+55%</span>
                                         since yesterday
                                     </p>
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 </div>
-            </div>-->
+            </div>
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                 <div class="card">
                     <div class="card-body p-3">
@@ -391,7 +391,7 @@
             </div>
         </div>
         <footer style="background-color: #f0f0f0; padding: 10px; text-align: center;">
-    <p>&copy; Mathematics challenge. All rights reserved.</p>
+    <p>&copy;Mathematics challenge Competition. Numbers Dont Lie</p>
 </footer>
         <!--@include('layouts.footers.auth.footer')-->
     </div>
