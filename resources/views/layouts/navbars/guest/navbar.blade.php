@@ -5,7 +5,7 @@
             <nav style="background-color: #252a48; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);"
                 class="navbar navbar-expand-lg blur border-radius-lg top-0 z-index-3 shadow position-absolute mt-4 py-2 start-0 end-0 mx-4">
                 <div class="container-fluid">
-                   <img src="/images/math.png" alt="Logo" style="width: 30px; height: 30px; margin-right: 10px;">
+                   <img src="/images/math.jpg" alt="Logo" style="width: 80px; height: 80px; margin-right: 10px;">
                     <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="{{ route('home') }}" style="font-size: 20px; color: #ffa07a;">
                         MATHEMATICS CHALLENGE COMPETITION
                     </a>
