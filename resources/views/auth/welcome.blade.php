@@ -50,11 +50,12 @@
             margin-top: 100px;
         }
         .header {
-            font-size: 2.5em;
+            font-size: 4em;
             margin-bottom: 20px;
+
         }
         .sub-header {
-            font-size: 1.2em;
+            font-size: 2em;
             margin-bottom: 40px;
         }
         .form-container {
@@ -103,15 +104,15 @@
     <div class="nav-bar">
         <div class="nav-links">
     
-           <div class="get-started"> <a  href="{{ route('login') }}">Login</a></div>
-           <div class="get-started"> <a  href="{{ route('dashboard') }}">dashboard</a></div>
+           <div class="get-started"> <a  href="{{ route('login') }}">ADMINISTRATOR LOGIN</a></div>
+           
     </div>
-        <a href="{{ route('schools-performance') }}" class="get-started">Analytics</a>
+        <a href="{{ route('dashboard') }}" class="get-started">GUEST VIEW</a>
     </div>
     <div class="container">
-    <div class="header">THE</div>
-        <div class="header">MATHEMATICS CHALLENGE COMPETITION</div>
-        <div class="sub-header">NUMBERS DONT LIE!!.</div>
+    <div class="header"><strong>THE</strong></div>
+        <div class="header"><strong>MATHEMATICS CHALLENGE COMPETITION</strong></div>
+        <div class="sub-header"><strong>NUMBERS DONT LIE!!.</strong></div>
         <!--<div class="form-container">
             <input type="text" placeholder="Email or Username" class="input-field">
             <input type="password" placeholder="Password" class="input-field">
