@@ -8,13 +8,26 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: url('/images/pupil.jpg') no-repeat center center fixed;
+            background: var(--bg-image, url('/images/pupil.jpg')) no-repeat center center fixed;
+            /* ... */ no-repeat center center fixed;
             color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
             height: 100vh;
         }
+     body::before {
+            content: '';
+             position: absolute;
+             top: 0;
+             left: 0;
+             right: 0;
+             bottom: 0;
+             background: url('/images/pupil.jpg') no-repeat center center fixed;
+            background-size: cover;
+             transition: opacity 1s ease-in-out;
+             z-index: -1;
+}
         .nav-bar {
             width: 100%;
             padding: 20px 50px;
@@ -97,7 +110,21 @@
             color: #00BFFF;
             text-decoration: none;
         }
+        body.fade-out::before {
+    opacity: 0;
+}
     </style>
+    <script>
+    function changeBackground(/images/pupil 7 (2).jpg) {
+        const body = document.body;
+        body.classList.add('fade-out');
+        
+        setTimeout(() => {
+            body.style.setProperty('--bg-image', `url('${/images/pupil 7 (2).jpg}')`);
+            body.classList.remove('fade-out');
+        }, 1000);
+    }
+</script>
 </head>
 <body >
     <div class="nav-bar">
@@ -106,12 +133,13 @@
            <div class="get-started"> <a  href="{{ route('login') }}">Login</a></div>
            <div class="get-started"> <a  href="{{ route('dashboard') }}">dashboard</a></div>
     </div>
-        <a href="{{ route('schools-performance') }}" class="get-started">Analytics</a>
+        <a href="{{ route('dashboard') }}" class="get-started">Analytics</a>
     </div>
     <div class="container">
     <div class="header">THE</div>
         <div class="header">MATHEMATICS CHALLENGE COMPETITION</div>
         <div class="sub-header">NUMBERS DONT LIE!!.</div>
+        <!--<button onclick="changeBackground('/images/pupil 7 (2).jpg')">Change Background</button>
         <!--<div class="form-container">
             <input type="text" placeholder="Email or Username" class="input-field">
             <input type="password" placeholder="Password" class="input-field">
@@ -123,4 +151,9 @@
         </div>-->
     </div>
 </body>
+<script>
+    window.onload = function() {
+        changeBackground('/images/pupil 7 (2).jpg');
+    };
+</script>
 </html>

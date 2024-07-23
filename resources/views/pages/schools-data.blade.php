@@ -1,91 +1,76 @@
-<!@extends('layouts.app',['class' => 'g-sidenav-show bg-gray-100'])
-@include('layouts.navbars.auth.topnav', ['title' => 'Challenge Creation'])
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Schools List</title>
-     <style>
+@extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
-        table {
-            margin-left:0px;
-            border-collapse: collapse; 
-            width: 100%;
-            
-        }
-        
-        th, td {
-            border: 1px solid black; /
-            padding: 10px; 
-            text-align: 
-        }
-        
-        th {
-            background-color: #f0f0f0; 
-        }
-    </style>
-    
-</head>
-<body style="text-align:center;" >
-    <h1>Schools</h1>
+@section('content')
+    @include('layouts.navbars.auth.topnav', ['title' => 'Schools-Information'])
 
-    <!-- Display success message if any -->
-    <?php if(session('success')): ?>
-        <div class="alert alert-success">
-            <?php echo session('success'); ?>
-        </div>
-    <?php endif; ?>
-
-    <!-- Add a link to create a new challenge -->
-    <a href="<?php echo route('challenges.create'); ?>">School Information</a>
-
-    <!-- Check if there are any challenges -->
-    <?php if($school_representative->count() > 0): ?>
-        <table>
-            <thead>
-                <tr>
-                    <th>School Name</th>
-                    <th>School District</th>
-                    <th>School RegNo</th>
-                    <th>School phone</th>
-                    <th>Representative Firstname</th>
-                    <th>Representative Lastname</th>
-                    <th>Representative Email</th>
-                    <th>representative password</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach($school_representative as $school): ?>
-                    <tr>
-                        <td><?php echo $school->school_name; ?></td>
-                        <td><?php echo $school->school_district; ?></td>
-                        <td><?php echo $school->school_regNo; ?></td>
-                        <td><?php echo $school->school_phone; ?></td>
-                        <td><?php echo $school->representative_firstname; ?></td>
-                        <td><?php echo $school->representative_lastname;?></td>
-                        <td><?php echo  $school->representative_email;?></td>
-                        <td><?php echo $school->rep_password; ?></td>
-                        
-    
-                        <td>
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header pb-0">
+                        <h6>Schools Information</h6>
+                    </div>
+                    <div class="card-body px-0 pt-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <h1>Schools</h1>
                             
-                            <!-- Add a delete form here if needed -->
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    <?php else: ?>
-        <p>No challenges found.</p>
-    <?php endif; ?>
+                            @if(session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
 
-    
-</body>
-<footer style="background-color: #f0f0f0; padding: 10px; text-align:centre;">
-    <p>&copy;Mathematics challenge Competition. Numbers Dont Lie</p>
-</footer>
-</html>
+                            <p>Welcome, Gloria Rugambwa</p>
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Log out
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
 
+                            @if($school_representative->count() > 0)
+                                <table class="table align-items-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>School Name</th>
+                                            <th>School District</th>
+                                            <th>School RegNo</th>
+                                            <th>School phone</th>
+                                            <th>Representative Firstname</th>
+                                            <th>Representative Lastname</th>
+                                            <th>Representative Email</th>
+                                            <th>Representative password</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($school_representative as $school)
+                                            <tr>
+                                                <td>{{ $school->school_name }}</td>
+                                                <td>{{ $school->school_district }}</td>
+                                                <td>{{ $school->school_regNo }}</td>
+                                                <td>{{ $school->school_phone }}</td>
+                                                <td>{{ $school->representative_firstname }}</td>
+                                                <td>{{ $school->representative_lastname }}</td>
+                                                <td>{{ $school->representative_email }}</td>
+                                                <td>{{ $school->rep_password }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @else
+                                <p>No schools found.</p>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @include('layouts.footers.auth.footer')
+    </div>
+@endsection
+
+@push('js')
+    <script src="./assets/js/plugins/chartjs.min.js"></script>
+@endpush
