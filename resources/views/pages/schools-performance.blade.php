@@ -34,10 +34,10 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2 py-1">
-                                               <div>
+                                               <!--<div>
                                                    <img src="/mathematicsimages/mathematicsimages/schoool.png" class="avatar avatar-sm me-3"
                                                         alt="St Kafeero Primary School">
-                                                </div>
+                                                </div>-->
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">St Kafeero Primary School</h6>
                                                     <p class="text-xs text-secondary mb-0">"Through knowledge to Virtue"</p>
@@ -64,10 +64,10 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2 py-1">
-                                                <div>
+                                                <!--<div>
                                                     <img src="/mathematicsimages/mathematicsimages/gombe school badge.jpg" class="avatar avatar-sm me-3"
                                                         alt="gombe school">
-                                                </div>
+                                                </div>-->
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">Gombe Primary School</h6>
                                                     <p class="text-xs text-secondary mb-0">Ssosolye Bwatafa</p>
@@ -95,9 +95,9 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div>
-                                                    <img src="/mathematicsimages/mathematicsimages/mbarara junior.jpeg" class="avatar avatar-sm me-3"
+                                                   <!-- <img src="/mathematicsimages/mathematicsimages/mbarara junior.jpeg" class="avatar avatar-sm me-3"
                                                         alt="mbarara junior school">
-                                                </div>
+                                                </div>-->
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">Mbarara Junior School</h6>
                                                     <p class="text-xs text-secondary mb-0">"Work and Behave"</p>
@@ -124,10 +124,10 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2 py-1">
-                                                <div>
+                                                <!--<div>
                                                     <img src="/mathematicsimages/mathematicsimages/badge_kamukanga.png" class="avatar avatar-sm me-3"
                                                         alt="schoolof Kamukanga">
-                                                </div>
+                                                </div>-->
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">School of Kamukanga</h6>
                                                     <p class="text-xs text-secondary mb-0">"It is never too late"</p>
@@ -154,10 +154,10 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2 py-1">
-                                                <div>
+                                                <!--<div>
                                                     <img src="/mathematicsimages/mathematicsimages/Grace Primary school badge.jpeg" class="avatar avatar-sm me-3"
                                                         alt="school badge">
-                                                </div>
+                                                </div>-->
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">Grace Primary School</h6>
                                                     <p class="text-xs text-secondary mb-0">"Knowledge is Wealth"</p>
@@ -184,10 +184,10 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2 py-1">
-                                                <div>
+                                                <!--<div>
                                                     <img src="/mathematicsimages/mathematicsimages/good samaritan junior school.jpg" class="avatar avatar-sm me-3"
                                                         alt="school badge">
-                                                </div>
+                                                </div>-->
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">Good Samaritan Junior School</h6>
                                                     <p class="text-xs text-secondary mb-0">"Excel With God's Help"</p>
@@ -247,10 +247,10 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2">
-                                                <div>
+                                                <!--<div>
                                                     <img src="/mathematicsimages/mathematicsimages/New Stevenson Primary.jpeg"
                                                         class="avatar avatar-sm rounded-circle me-2" alt="school badge">
-                                                </div>
+                                                </div>-->
                                                 <div class="my-auto">
                                                     <h6 class="mb-0 text-sm">New Stevenson Primary School</h6>
                                                     <p class="text-xs text-secondary mb-0">"Excel With God's Help"</p>
@@ -284,10 +284,10 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2">
-                                                <div>
+                                                <!--<div>
                                                     <img src="/mathematicsimages/mathematicsimages/Oak international School.png"
                                                         class="avatar avatar-sm rounded-circle me-2" alt="school badge">
-                                                </div>
+                                                </div>-->
                                                 <div class="my-auto">
                                                     <h6 class="mb-0 text-sm">Oak International School</h6>
                                                     <p class="text-xs text-secondary mb-0">"We strive to achieve"</p>
@@ -322,10 +322,10 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2">
-                                                <div>
+                                                <!--<div>
                                                     <img src="/mathematicsimages/mathematicsimages/Kampala Junior School.jpg"
                                                         class="avatar avatar-sm rounded-circle me-2" alt="school badge">
-                                                </div>
+                                                </div>-->
                                                 <div class="my-auto">
                                                     <h6 class="mb-0 text-sm">Kampala Junior School</h6>
                                                     <p class="text-xs text-secondary mb-0">"For Future Leaders"</p>
@@ -360,10 +360,10 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2">
-                                                <div>
+                                                <!--<div>
                                                     <img src="/mathematicsimages/mathematicsimages/TNGS.png"
                                                         class="avatar avatar-sm rounded-circle me-2" alt="school badge">
-                                                </div>
+                                                </div>-->
                                                 <div class="my-auto">
                                                     <h6 class="mb-0 text-sm">The North Green School</h6>
                                                     <p class="text-xs text-secondary mb-0">"Excellence and Achievementg"</p>
@@ -398,10 +398,10 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2">
-                                                <div>
+                                                <!--<div>
                                                     <img src="/mathematicsimages/Bulamu Primary School.png"
                                                         class="avatar avatar-sm rounded-circle me-2" alt="school badge">
-                                                </div>
+                                                </div>-->
                                                 <div class="my-auto">
                                                     <h6 class="mb-0 text-sm">Bulamu Primary School</h6>
                                                     <p class="text-xs text-secondary mb-0">"A New Lease Of Life"</p>
@@ -436,10 +436,10 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2">
-                                                <div>
+                                                <!--<div>
                                                     <img src="/mathematicsimages/mathematicsimages/kennedy Primary School.png"
                                                         class="avatar avatar-sm rounded-circle me-2" alt="school badge">
-                                                </div>
+                                                </div>-->
                                                 <div class="my-auto">
                                                     <h6 class="mb-0 text-sm">Kennedy Primary School</h6>
                                                     <p class="text-xs text-secondary mb-0">"Education Is Our Priotity"</p>
@@ -479,6 +479,9 @@
             </div>
         </div>
     </body>
+    <footer style="background-color: #f0f0f0; padding: 10px; text-align: center;">
+    <p>&copy; Mathematics challenge Competition. Numbers Dont Lie.</p>
+</footer>
         @include('layouts.footers.auth.footer')
     </div>
 @endsection
