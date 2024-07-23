@@ -139,35 +139,15 @@ body::after {
            <div class="get-started"> <a  href="{{ route('login') }}">ADMINISTRATOR LOGIN</a></div>
            
     </div>
-<a href="{{ route('dashboard') }}" class="get-started">Guest View</a>
+
+        <a href="{{ route('dashboard') }}" class="get-started">GUEST VIEW</a>
 
     </div>
-    <div class="container">
+    <div class="container"style="color:white;">
     <div class="header">THE</div>
         <div class="header">MATHEMATICS CHALLENGE COMPETITION</div>
         <div class="sub-header">NUMBERS DONT LIE!!.</div>
-
         
-
-        <!--<button onclick="changeBackground('/images/pupil 7 (2).jpg')">Change Background</button>
-
-        <a href="{{ route('dashboard') }}" class="get-started">GUEST VIEW</a>
-    </div>
-    <div class="container">
-    <div class="header"><strong>THE</strong></div>
-        <div class="header"><strong>MATHEMATICS CHALLENGE COMPETITION</strong></div>
-        <div class="sub-header"><strong>NUMBERS DONT LIE!!.</strong></div>
-main
-        <!--<div class="form-container">
-            <input type="text" placeholder="Email or Username" class="input-field">
-            <input type="password" placeholder="Password" class="input-field">
-            <div class="remember-me">
-                <label><input type="checkbox"> Remember me</label>
-                <a href="#">Forgot Password?</a>
-            </div>
-            <button class="btn">Login</button>
-        </div>-->
-
     </div>
 </body>
 <script>
