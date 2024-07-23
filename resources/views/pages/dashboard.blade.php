@@ -1,4 +1,4 @@
-@endphp
+
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
@@ -14,13 +14,6 @@
                                 <div class="numbers">
 
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">MOST CORRECTLY ANSWERED QUESTIONS</p>
-<h5 class="font-weight-bolder">
-    @if ($mostCorrectlyAnsweredQuestion)
-        Question ID: {{ $mostCorrectlyAnsweredQuestion->question_id }}
-    @else
-        No data available
-    @endif
-</h5>
 
                                     <p class="mb-0">
                                         <span class="text-success text-sm font-weight-bolder">+55%</span>
