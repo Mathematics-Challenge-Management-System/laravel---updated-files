@@ -141,7 +141,7 @@ body::after {
     </div>
         <a href="{{ route('dashboard') }}" class="get-started">GUEST VIEW</a>
     </div>
-    <div class="container">
+    <div class="container"style="color:white;">
     <div class="header">THE</div>
         <div class="header">MATHEMATICS CHALLENGE COMPETITION</div>
         <div class="sub-header">NUMBERS DONT LIE!!.</div>
