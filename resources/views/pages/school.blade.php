@@ -168,6 +168,11 @@
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary btn-round btn-lg">{{ __('Save') }}</button>
                         </div>
+
+                                    </div>
+                                </div>
+
+
                     </form>
                 </div>
             </div>
@@ -176,4 +181,6 @@
     <p>&copy; Mathematics challenge Competition. All rights reserved.</p>
 </footer>
     </div>
+        @include('layouts.footers.auth.footer')
+
 @endsection
