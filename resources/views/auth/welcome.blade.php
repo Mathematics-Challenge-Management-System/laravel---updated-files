@@ -8,26 +8,42 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: var(--bg-image, url('/images/pupil.jpg')) no-repeat center center fixed;
-            /* ... */ no-repeat center center fixed;
-            color: white;
+            background: none;
+            color: black;
             display: flex;
             flex-direction: column;
             align-items: center;
             height: 100vh;
         }
-     body::before {
-            content: '';
-             position: absolute;
-             top: 0;
-             left: 0;
-             right: 0;
-             bottom: 0;
-             background: url('/images/pupil.jpg') no-repeat center center fixed;
-            background-size: cover;
-             transition: opacity 1s ease-in-out;
-             z-index: -1;
+        body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--bg-image, url('/images/pupil.jpg'));
+    opacity: var(--current-bg-opacity, 1);
+    background-size: cover;
+    transition: opacity 5s ease-in-out;
+    z-index: -1;
 }
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--next-bg-image);
+    opacity: var(--next-bg-opacity, 0);
+    background-size: cover;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    z-index: -2;
+}
+
         .nav-bar {
             width: 100%;
             padding: 20px 50px;
@@ -123,20 +139,20 @@
            <div class="get-started"> <a  href="{{ route('login') }}">ADMINISTRATOR LOGIN</a></div>
            
     </div>
-<<<<<<< HEAD
+
         <a href="{{ route('schools-performance') }}" class="get-started">Analytics</a>
-=======
- main
+
+ 
         <a href="{{ route('dashboard') }}" class="get-started">Analytics</a>
->>>>>>> edaae089587047873938289740e46e3dca569563
+
     </div>
     <div class="container">
     <div class="header">THE</div>
         <div class="header">MATHEMATICS CHALLENGE COMPETITION</div>
         <div class="sub-header">NUMBERS DONT LIE!!.</div>
-<<<<<<< HEAD
+
         
-=======
+
         <!--<button onclick="changeBackground('/images/pupil 7 (2).jpg')">Change Background</button>
 
         <a href="{{ route('dashboard') }}" class="get-started">GUEST VIEW</a>
@@ -155,8 +171,37 @@ main
             </div>
             <button class="btn">Login</button>
         </div>-->
->>>>>>> edaae089587047873938289740e46e3dca569563
+
     </div>
 </body>
+<script>
+    const images = [
+        '/images/pupil.jpg',
+        '/images/pupil 7 (2).jpg',
+        '/images/children on laptops.jpg',
+        '/images/pupil 10.jpeg',
+        // Add more image paths as needed
+    ];
+    let currentIndex = 0;
+
+    function changeBackground() {
+        const body = document.body;
+        currentIndex = (currentIndex + 1) % images.length;
+        const newImage = images[currentIndex];
+        
+        body.style.setProperty('--next-bg-image', `url('${newImage}')`);
+        body.style.setProperty('--current-bg-opacity', '0');
+        body.style.setProperty('--next-bg-opacity', '1');
+        
+        setTimeout(() => {
+            body.style.setProperty('--bg-image', `url('${newImage}')`);
+            body.style.setProperty('--current-bg-opacity', '1');
+            body.style.setProperty('--next-bg-opacity', '0');
+        }, 5000); // This should match the transition duration
+    }
+
+    // Change background every 5 seconds
+    setInterval(changeBackground, 5000);
+</script>
 
 </html>
