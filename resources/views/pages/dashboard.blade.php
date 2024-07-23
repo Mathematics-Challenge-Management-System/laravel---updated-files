@@ -1,3 +1,4 @@
+@endphp
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
@@ -10,11 +11,14 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Student Rewards</p>
-                                    <h5 class="font-weight-bolder">
-                                        shs.3,000,000
-                                    </h5>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">MOST CORRECTLY ANSWERED QUESTIONS</p>
+<h5 class="font-weight-bolder">
+    @if ($mostCorrectlyAnsweredQuestion)
+        Question ID: {{ $mostCorrectlyAnsweredQuestion->question_id }}
+    @else
+        No data available
+    @endif
+</h5>
                                     <p class="mb-0">
                                         <span class="text-success text-sm font-weight-bolder">+55%</span>
                                         since yesterday
