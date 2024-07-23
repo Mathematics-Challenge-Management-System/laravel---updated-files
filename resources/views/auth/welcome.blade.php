@@ -110,21 +110,10 @@
             color: #00BFFF;
             text-decoration: none;
         }
-        body.fade-out::before {
-    opacity: 0;
-}
-    </style>
-    <script>
-    function changeBackground(/images/pupil 7 (2).jpg) {
-        const body = document.body;
-        body.classList.add('fade-out');
         
-        setTimeout(() => {
-            body.style.setProperty('--bg-image', `url('${/images/pupil 7 (2).jpg}')`);
-            body.classList.remove('fade-out');
-        }, 1000);
-    }
-</script>
+    </style>
+    
+   
 </head>
 <body >
     <div class="nav-bar">
@@ -133,27 +122,14 @@
            <div class="get-started"> <a  href="{{ route('login') }}">Login</a></div>
            <div class="get-started"> <a  href="{{ route('dashboard') }}">dashboard</a></div>
     </div>
-        <a href="{{ route('dashboard') }}" class="get-started">Analytics</a>
+        <a href="{{ route('schools-performance') }}" class="get-started">Analytics</a>
     </div>
     <div class="container">
     <div class="header">THE</div>
         <div class="header">MATHEMATICS CHALLENGE COMPETITION</div>
         <div class="sub-header">NUMBERS DONT LIE!!.</div>
-        <!--<button onclick="changeBackground('/images/pupil 7 (2).jpg')">Change Background</button>
-        <!--<div class="form-container">
-            <input type="text" placeholder="Email or Username" class="input-field">
-            <input type="password" placeholder="Password" class="input-field">
-            <div class="remember-me">
-                <label><input type="checkbox"> Remember me</label>
-                <a href="#">Forgot Password?</a>
-            </div>
-            <button class="btn">Login</button>
-        </div>-->
+        
     </div>
 </body>
-<script>
-    window.onload = function() {
-        changeBackground('/images/pupil 7 (2).jpg');
-    };
-</script>
+
 </html>
