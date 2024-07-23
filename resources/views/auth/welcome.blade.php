@@ -25,7 +25,7 @@
     background-image: var(--bg-image, url('/images/pupil.jpg'));
     opacity: var(--current-bg-opacity, 1);
     background-size: cover;
-    transition: opacity 5s ease-in-out;
+    transition: opacity 2s ease-in-out;
     z-index: -1;
 }
 
@@ -39,7 +39,7 @@ body::after {
     background-image: var(--next-bg-image);
     opacity: var(--next-bg-opacity, 0);
     background-size: cover;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 2s ease-in-out;
     z-index: -2;
 }
@@ -139,11 +139,7 @@ body::after {
            <div class="get-started"> <a  href="{{ route('login') }}">ADMINISTRATOR LOGIN</a></div>
            
     </div>
-
-        <a href="{{ route('schools-performance') }}" class="get-started">Analytics</a>
-
- 
-        <a href="{{ route('dashboard') }}" class="get-started">Analytics</a>
+<a href="{{ route('dashboard') }}" class="get-started">Guest View</a>
 
     </div>
     <div class="container">
@@ -179,7 +175,7 @@ main
         '/images/pupil.jpg',
         '/images/pupil 7 (2).jpg',
         '/images/children on laptops.jpg',
-        '/images/pupil 10.jpeg',
+        '/images/pupil 4.jpg',
         // Add more image paths as needed
     ];
     let currentIndex = 0;
@@ -197,11 +193,11 @@ main
             body.style.setProperty('--bg-image', `url('${newImage}')`);
             body.style.setProperty('--current-bg-opacity', '1');
             body.style.setProperty('--next-bg-opacity', '0');
-        }, 5000); // This should match the transition duration
+        }, 2000); // This should match the transition duration
     }
 
-    // Change background every 5 seconds
-    setInterval(changeBackground, 5000);
+    // Change background every 2 seconds
+    setInterval(changeBackground, 2000);
 </script>
 
 </html>
