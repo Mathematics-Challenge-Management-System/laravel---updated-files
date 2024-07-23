@@ -17,8 +17,8 @@
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             <div class="nav-bar">
                 <div class="nav-links">
-        
-                   <div class="get-started"> <a href="{{ route('schools-performance') }}"></a></div>
+
+                   <div class="get-started"> <a href="{{ route('virtual-reality') }}"></a></div>
             </div>
             </div>
             <ul class="navbar-nav  justify-content-end">
@@ -132,6 +132,8 @@
                 </li>
             </ul>
         </div>
+    </div>
+
     </div>
 </nav>
 <!-- End Navbar -->
