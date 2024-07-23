@@ -42,7 +42,7 @@
             font-size: 1em;
         }
         .get-started:hover {
-            background-color: white;
+            background-color: orange;
             color: #7F00FF;
         }
         .container {
@@ -100,13 +100,14 @@
     </style>
 </head>
 <body >
+<script src="script.js"></script>
     <div class="nav-bar">
         <div class="nav-links">
     
            <div class="get-started"> <a  href="{{ route('login') }}">Login</a></div>
            <div class="get-started"> <a  href="{{ route('dashboard') }}">dashboard</a></div>
     </div>
-        <a href="{{ route('virtual-reality') }}" class="get-started">Analytics</a>
+        <a href="{{ route('schools-performance') }}" class="get-started">Analytics</a>
     </div>
     <div class="container">
     <div class="header">THE</div>
