@@ -17,8 +17,8 @@
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                 <div class="nav-bar">
                     <div class="nav-links">
-                        <img src="/images/math.png" alt="Logo" style="width: 30px; height: 30px; margin-right: 10px;">
-                        <a class="nav-link text-white font-weight-bold" href="{{ route('home') }}">MATHEMATICS CHALLENGE COMPETITION</a>
+                   <div> <img src="/images/math.jpg" alt="Logo" style="width:80px;height:80px;"></div>
+                       <div> <a class="nav-link text-white font-weight-bold" href="{{ route('home') }}">MATHEMATICS CHALLENGE COMPETITION</a></div>
                         <div class="get-started"> <a href="{{ route('schools-performance') }}"></a></div>
                     </div>
                 </div>
