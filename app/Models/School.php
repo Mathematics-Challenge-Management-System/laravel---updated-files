@@ -12,6 +12,15 @@ class School extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = 'school_representative';
+    // Fetch the data from the database
+    public function index()
+{
+
+$school_representative = School::orderBy('school_name')->paginate(40);
+
+// Pass the paginated data to the view
+return view('pages.schools-data', ['school_representative' => $school_representative]);
+}
 //    protected $primaryKey = 'school_regNo';
 //public $incrementing = false;
 //protected $keyType = 'string';
@@ -33,6 +42,7 @@ class School extends Authenticatable
         'rep_password',
 
     ];
+// Fetch the data from the database
 
 
 

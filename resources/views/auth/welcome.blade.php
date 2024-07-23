@@ -106,7 +106,7 @@
            <div class="get-started"> <a  href="{{ route('login') }}">Login</a></div>
            <div class="get-started"> <a  href="{{ route('dashboard') }}">dashboard</a></div>
     </div>
-        <a href="{{ route('virtual-reality') }}" class="get-started">Analytics</a>
+        <a href="{{ route('schools-performance') }}" class="get-started">Analytics</a>
     </div>
     <div class="container">
     <div class="header">THE</div>
