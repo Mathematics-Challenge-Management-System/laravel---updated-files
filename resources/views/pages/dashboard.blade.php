@@ -9,17 +9,11 @@
                 <div class="card">
                     <div class="card-body p-3">
                         <div class="row">
+
                             <div class="col-8">
                                 <div class="numbers">
 
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">MOST CORRECTLY ANSWERED QUESTIONS</p>
-<h5 class="font-weight-bolder">
-    @if (isset($mostCorrectlyAnsweredQuestion))
-        Question ID: {{ $mostCorrectlyAnsweredQuestion->question_id }}
-    @else
-        No data available
-    @endif
-</h5>
 
                                     <p class="mb-0">
                                         <span class="text-success text-sm font-weight-bolder">+55%</span>
@@ -27,6 +21,11 @@
                                     </p>
                                 </div>
                             </div>
+
+            <div class="col-12">
+                <a href="{{ route('schools-performance') }}" class="btn btn-primary">School Performance</a>
+            </div>
+
                             <div class="col-4 text-end">
                                 <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
                                     <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
@@ -73,7 +72,7 @@
                                     </h5>
                                     <p class="mb-0">
                                         <span class="text-danger text-sm font-weight-bolder">60%</span>
-                                        since last month
+                                        since last year
                                     </p>
                                 </div>
                             </div>
@@ -94,10 +93,10 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Challenges attempted</p>
                                     <h5 class="font-weight-bolder">
-                                        3,430
+                                        1400
                                     </h5>
                                     <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
+                                        <span class="text-success text-sm font-weight-bolder">+5%</span> since last year
                                     </p>
                                 </div>
                             </div>
@@ -117,8 +116,8 @@
                     <div class="card-header pb-0 pt-3 bg-transparent">
                         <h6 class="text-capitalize">Student Participation Graph</h6>
                         <p class="text-sm mb-0">
-                            <i class="fa fa-arrow-up text-success"></i>
-                            <!--<span class="font-weight-bold">4% more</span> in 2021-->
+                            <!--<i class="fa fa-arrow-up text-success"></i>
+                            <span class="font-weight-bold">4% more</span> in 2021-->
                         </p>
                     </div>
                    <div class="card-body p-3">
@@ -351,7 +350,6 @@
                                         <span class="text-xs">Twed Towers, <span class="font-weight-bold">Kampala
                                                 </span></span>
                                     </div>
-
                                 </div>
                                 <div class="d-flex">
                                     <button

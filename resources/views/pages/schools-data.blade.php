@@ -1,6 +1,6 @@
-<!@extends('layouts.app',['class' => 'g-sidenav-show bg-gray-100'])
-@include('layouts.navbars.auth.topnav', ['title' => 'Challenge Creation'])
+@extends('layouts.app',['class' => 'g-sidenav-show bg-gray-100'])
 
+@include('layouts.navbars.auth.topnav', ['title' => 'Schools-Information'])
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +24,7 @@
         }
         
         th {
-            background-color: #f0f0f0; 
+            background-color: coral; 
         }
     </style>
     

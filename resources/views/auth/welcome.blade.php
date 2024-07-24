@@ -8,13 +8,42 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: url('/images/pupil.jpg') no-repeat center center fixed;
-            color: white;
+            background: none;
+            color: black;
             display: flex;
             flex-direction: column;
             align-items: center;
             height: 100vh;
         }
+        body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--bg-image, url('/images/pupil.jpg'));
+    opacity: var(--current-bg-opacity, 1);
+    background-size: cover;
+    transition: opacity 2s ease-in-out;
+    z-index: -1;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--next-bg-image);
+    opacity: var(--next-bg-opacity, 0);
+    background-size: cover;
+    opacity: 1;
+    transition: opacity 2s ease-in-out;
+    z-index: -2;
+}
+
         .nav-bar {
             width: 100%;
             padding: 20px 50px;
@@ -98,7 +127,10 @@
             color: #00BFFF;
             text-decoration: none;
         }
+        
     </style>
+    
+   
 </head>
 <body >
     <div class="nav-bar">
@@ -107,21 +139,47 @@
            <div class="get-started"> <a  href="{{ route('login') }}">ADMINISTRATOR LOGIN</a></div>
            
     </div>
+
         <a href="{{ route('dashboard') }}" class="get-started">GUEST VIEW</a>
+
     </div>
-    <div class="container">
-    <div class="header"><strong>THE</strong></div>
-        <div class="header"><strong>MATHEMATICS CHALLENGE COMPETITION</strong></div>
-        <div class="sub-header"><strong>NUMBERS DONT LIE!!.</strong></div>
-        <!--<div class="form-container">
-            <input type="text" placeholder="Email or Username" class="input-field">
-            <input type="password" placeholder="Password" class="input-field">
-            <div class="remember-me">
-                <label><input type="checkbox"> Remember me</label>
-                <a href="#">Forgot Password?</a>
-            </div>
-            <button class="btn">Login</button>
-        </div>-->
+    <div class="container"style="color:white;">
+    <div class="header">THE</div>
+        <div class="header">MATHEMATICS CHALLENGE COMPETITION</div>
+        <div class="sub-header">NUMBERS DONT LIE!!.</div>
+         <div class="sub-header">  <img src="/images/math.jpg" alt="Logo" style="width:100px;height:100px;"></div>
+        
+        
     </div>
 </body>
+<script>
+    const images = [
+        '/images/pupil.jpg',
+        '/images/pupil 7 (2).jpg',
+        '/images/children on laptops.jpg',
+        '/images/pupil 4.jpg',
+        // Add more image paths as needed
+    ];
+    let currentIndex = 0;
+
+    function changeBackground() {
+        const body = document.body;
+        currentIndex = (currentIndex + 1) % images.length;
+        const newImage = images[currentIndex];
+        
+        body.style.setProperty('--next-bg-image', `url('${newImage}')`);
+        body.style.setProperty('--current-bg-opacity', '0');
+        body.style.setProperty('--next-bg-opacity', '1');
+        
+        setTimeout(() => {
+            body.style.setProperty('--bg-image', `url('${newImage}')`);
+            body.style.setProperty('--current-bg-opacity', '1');
+            body.style.setProperty('--next-bg-opacity', '0');
+        }, 2000); // This should match the transition duration
+    }
+
+    // Change background every 2 seconds
+    setInterval(changeBackground, 2000);
+</script>
+
 </html>
