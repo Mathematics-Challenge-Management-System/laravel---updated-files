@@ -33,7 +33,19 @@ class School extends Authenticatable
         'rep_password',
 
     ];
-
+public function scopeBestPerforming($query)
+{
+    return $query->select([
+        'schools.school_name',
+        'schools.school_regNo',
+        'schools.school_district',
+        laravelll::raw('SUM(participant_challenges.score) AS total_score'),
+    ])
+    ->join('participants', 'schools.school_regNo', '=', 'participants.school_regNo')
+    ->join('participant_challenges', 'participants.id', '=', 'participant_challenges.participant_id')
+    ->groupBy('schools.id')
+    ->orderBy('total_score', 'DESC');
+    }
 
 
 }

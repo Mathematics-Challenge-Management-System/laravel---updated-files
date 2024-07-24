@@ -20,8 +20,7 @@
     @endif
 </h5>
                                     <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+55%</span>
-                                        since yesterday
+                                        <span class="text-success text-sm font-weight-bolder"></span>
                                     </p>
                                 </div>
                             </div>

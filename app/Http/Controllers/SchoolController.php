@@ -15,6 +15,13 @@ class SchoolController extends Controller
 
     public function show()
     {
+        public function show()
+{
+    $bestPerformingSchools = School::bestPerforming()->get();
+
+    return view('pages.school', ('bestPerformingSchools'));
+}
+    }
 
     }
 

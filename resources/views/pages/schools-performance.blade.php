@@ -230,20 +230,28 @@
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            School</th>
+                                            School name </th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            District</th>
+                                           School District</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Number OF Students</th>
+                                            School RegNo</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">
-                                            Perfomance</th>
+                                            Total score</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                     @foreach ($bestPerformingSchools as $school)
+                                  <tr>
+                                 <td>{{ $school->school_name }}</td>
+                                <td>{{ $school->school_regNo }}</td>
+                                <td>{{ $school->school_district }}</td>
+                                <td>{{ $school->total_score }}</td>
+                                </tr>
+                                    @endforeach
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2">
