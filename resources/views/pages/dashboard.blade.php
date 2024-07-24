@@ -1,3 +1,4 @@
+
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
@@ -10,11 +11,16 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Student Rewards</p>
-                                    <!--<h5 class="font-weight-bolder">
-                                        sh
-                                    </h5>-->
+
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">MOST CORRECTLY ANSWERED QUESTIONS</p>
+<h5 class="font-weight-bolder">
+    @if (isset($mostCorrectlyAnsweredQuestion))
+        Question ID: {{ $mostCorrectlyAnsweredQuestion->question_id }}
+    @else
+        No data available
+    @endif
+</h5>
+
                                     <p class="mb-0">
                                         <span class="text-success text-sm font-weight-bolder">+55%</span>
                                         since yesterday
@@ -186,7 +192,7 @@
                                     <td class="w-30">
                                         <div class="d-flex px-2 py-1 align-items-center">
                                             <div>
-                                                
+
                                             </div>
                                             <div class="ms-4">
                                                 <p class="text-xs font-weight-bold mb-0">District:</p>
@@ -217,7 +223,7 @@
                                     <td class="w-30">
                                         <div class="d-flex px-2 py-1 align-items-center">
                                             <div>
-                                            
+
                                             </div>
                                             <div class="ms-4">
                                                 <p class="text-xs font-weight-bold mb-0">District:</p>
@@ -248,7 +254,7 @@
                                     <td class="w-30">
                                         <div class="d-flex px-2 py-1 align-items-center">
                                             <div>
-                                                
+
                                             </div>
                                             <div class="ms-4">
                                                 <p class="text-xs font-weight-bold mb-0">District:</p>
@@ -279,7 +285,7 @@
                                     <td class="w-30">
                                         <div class="d-flex px-2 py-1 align-items-center">
                                             <div>
-                                                
+
                                             </div>
                                             <div class="ms-4">
                                                 <p class="text-xs font-weight-bold mb-0">District:</p>
@@ -345,6 +351,7 @@
                                         <span class="text-xs">Twed Towers, <span class="font-weight-bold">Kampala
                                                 </span></span>
                                     </div>
+
                                 </div>
                                 <div class="d-flex">
                                     <button

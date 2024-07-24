@@ -18,13 +18,14 @@ $this->challenge_id = $challenge_id;
 // Read and store answers from the provided file
 $this->answers = Excel::toArray(null, $answersFilePath)[0];
 // Import questions
-Excel::import($this, $questionFilePath);
+Excel::import($this,$questionFilePath);
 }
 
 public function collection(Collection $rows)
 {
 foreach ($rows as $index => $row) {
 $answerData = $this->answers[$index] ?? null; // Match by index
+
 
 
 if ($answerData) {

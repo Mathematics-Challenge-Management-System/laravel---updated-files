@@ -106,5 +106,11 @@
 
 @include('layouts.footers.auth.footer')
 
+
+</body>
+<footer style="background-color: #f0f0f0; padding: 10px; text-align: center;">
+    <p>&copy;Mathematics challenge Competition. Numbers Dont Lie</p>
+</footer>
+</html>
 @endsection
 
