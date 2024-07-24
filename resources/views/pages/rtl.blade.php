@@ -13,6 +13,44 @@
                 <img src="/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
                 <span class="me-1 font-weight-bold">Argon Dashboard 2</span>
             </a>
+<!--@extends('layouts.app')
+@include('layouts.navbars.auth.topnav', ['title' => 'Your school'])
+@section('content')
+<h1>School Information</h1>
+<table>
+    <tr>
+        <th colspan="2">School Information</th>
+    </tr>
+                            <!--<table class="table align-items-center mb-0">-->
+                                <!--<thead>
+                                    <tr>
+                                        <th>School_name</th> 
+                                        <th>District</th>  
+                                        <th>Reg_no</th>
+                                        <th>school_phone</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if($school_representative->isEmpty())
+                                    <p>No shools found</p>
+                                    @else
+                                    @foreach($school_representative as $school)
+                                    <tr>
+                                        <td>{{$school->school_name}}</td>
+                                        <td>{{$school->school_regNo}}</td>
+                                        <td>{{$school->school_district}}</td>
+                                        <td>{{$school->school_phone}}</td>
+                                        </tr>
+                                        @endforeach
+                                        @endif
+                                        </tbody>
+                                        </table>
+                                        @endsection
+
+
+
+                                            
         </div>
         <hr class="horizontal dark mt-0">
         <div class="collapse navbar-collapse px-0 w-auto " id="sidenav-collapse-main">

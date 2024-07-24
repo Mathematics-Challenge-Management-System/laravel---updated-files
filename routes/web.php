@@ -34,7 +34,7 @@ Route::get('/', function () {return view ('auth.welcome');});
 Route::get('/dashboard', function () {
     return view('pages.dashboard');
 })->name('dashboard');
-Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
+Route::get('/schools-performance', [PageController::class, 'vr'])->name('schools-performance');
 Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->name('login.perform');
 
@@ -58,11 +58,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
         Route::get('/pages/{page}', [PageController::class, 'index'])->name('page');
         Route::get('school', [ App\Http\Controllers\SchoolController::class, 'create'])->name('school');
+Route::get('/schools/display',[App\Http\Controllers\SchoolController::class, 'displaySchoolDetails'])->name('schools.display');
 Route::post('school', [ App\Http\Controllers\SchoolController::class, 'store'])->name('school.store');
-
-
-
-
 Route::get('/challenge-creation', [ChallengeController::class, 'create'])->name('challenges.create');
 Route::get('/challenge-index', [ChallengeController::class, 'index'])->name('challenges.index');
 Route::post('/challenge-creation', [ChallengeController::class, 'store'])->name('challenges.store');

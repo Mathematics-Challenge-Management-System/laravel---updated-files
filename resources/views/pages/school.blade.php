@@ -193,6 +193,8 @@
                 </div>
             </div>
         </div>
-        @include('layouts.footers.auth.footer')
+        <footer style="background-color: #f0f0f0; padding: 10px; text-align: center;">
+    <p>&copy; Mathematics challenge Competition. All rights reserved.</p>
+</footer>
     </div>
 @endsection

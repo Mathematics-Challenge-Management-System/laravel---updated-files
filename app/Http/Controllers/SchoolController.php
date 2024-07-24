@@ -24,7 +24,16 @@ class SchoolController extends Controller
     }
 
     }
+    public function displaySchoolDetails(){
+        $school_representative=School::all();
 
+        if($school_representative->isEmpty()){
+            dd('No schools found');
+        }else{
+
+        return view ('pages.schools-data',compact('school_representative'));
+    }
+}
     public function store(Request $request)
     {
         try {
