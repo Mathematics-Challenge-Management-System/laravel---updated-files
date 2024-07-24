@@ -33,7 +33,9 @@ $innerQuery->select('challenge_id')
 ->first();
 
 Log::info('Most correctly answered question: ' . json_encode($mostCorrectlyAnsweredQuestion));
+    $mostCorrectlyAnsweredQuestion=34;
 
-return view('pages.dashboard')->with('mostCorrectlyAnsweredQuestion', $mostCorrectlyAnsweredQuestion);
+    return view('pages.dashboard', compact('mostCorrectlyAnsweredQuestion'));
 }
+
 }
