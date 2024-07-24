@@ -1,4 +1,4 @@
-@endphp
+
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
@@ -14,7 +14,7 @@
 
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">MOST CORRECTLY ANSWERED QUESTIONS</p>
 <h5 class="font-weight-bolder">
-    @if ($mostCorrectlyAnsweredQuestion)
+    @if (isset($mostCorrectlyAnsweredQuestion))
         Question ID: {{ $mostCorrectlyAnsweredQuestion->question_id }}
     @else
         No data available
@@ -192,7 +192,7 @@
                                     <td class="w-30">
                                         <div class="d-flex px-2 py-1 align-items-center">
                                             <div>
-                                                
+
                                             </div>
                                             <div class="ms-4">
                                                 <p class="text-xs font-weight-bold mb-0">District:</p>
@@ -223,7 +223,7 @@
                                     <td class="w-30">
                                         <div class="d-flex px-2 py-1 align-items-center">
                                             <div>
-                                            
+
                                             </div>
                                             <div class="ms-4">
                                                 <p class="text-xs font-weight-bold mb-0">District:</p>
@@ -254,7 +254,7 @@
                                     <td class="w-30">
                                         <div class="d-flex px-2 py-1 align-items-center">
                                             <div>
-                                                
+
                                             </div>
                                             <div class="ms-4">
                                                 <p class="text-xs font-weight-bold mb-0">District:</p>
@@ -285,7 +285,7 @@
                                     <td class="w-30">
                                         <div class="d-flex px-2 py-1 align-items-center">
                                             <div>
-                                                
+
                                             </div>
                                             <div class="ms-4">
                                                 <p class="text-xs font-weight-bold mb-0">District:</p>
@@ -351,6 +351,7 @@
                                         <span class="text-xs">Twed Towers, <span class="font-weight-bold">Kampala
                                                 </span></span>
                                     </div>
+
                                 </div>
                                 <div class="d-flex">
                                     <button

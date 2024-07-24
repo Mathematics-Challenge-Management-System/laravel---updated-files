@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\models\Participant_answer;
+use Illuminate\Support\Facades\Log;
 
 class DashboardController extends Controller
 {
@@ -18,8 +19,10 @@ class DashboardController extends Controller
         ->limit(1)
         ->select('question_id', laravelll::raw('COUNT(*) as correct_answers'))
         ->first();
+    Log::info('most correct'.$mostCorrectlyAnsweredQuestion);
 
-        return view('pages.dashboard',compact('mostCorrectlyAnsweredQuestion'));
+//        $mostCorrectlyAnsweredQuestion=90;
+        return view('pages.dashboard',$mostCorrectlyAnsweredQuestion);
     }
-    
+
 }
