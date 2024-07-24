@@ -9,16 +9,18 @@
                 <div class="card">
                     <div class="card-body p-3">
                         <div class="row">
-
                             <div class="col-8">
                                 <div class="numbers">
 
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">MOST CORRECTLY ANSWERED QUESTIONS</p>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Challenges</p>
+                                            <h5 class="font-weight-bolder">
+                                                @if (isset($challengess))
+                                                    {{ $challengess }}
+                                                @else
+                                                    No data available
+                                                @endif
+                                            </h5>
 
-                                    <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+55%</span>
-                                        since yesterday
-                                    </p>
                                 </div>
                             </div>
 
@@ -28,7 +30,8 @@
 
                             <div class="col-4 text-end">
                                 <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+{{--                                    icon for challenges--}}
+                                    <i class="ni ni-spaceship text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -43,17 +46,17 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold"> Participants</p>
                                     <h5 class="font-weight-bolder">
-                                        increasing
+                                        @if(isset($participants))
+                                            {{ $participants }}
+                                        @else
+                                            No data available
+                                        @endif
                                     </h5>
-                                    <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+3%</span>
-                                        since last week
-                                    </p>
                                 </div>
                             </div>
                             <div class="col-4 text-end">
                                 <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                                    <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                                    <i class="ni ni-single-02 text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -66,19 +69,20 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">New Schools</p>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Schools</p>
                                     <h5 class="font-weight-bolder">
-                                        27
+                                        @if(isset($schools))
+                                            {{ $schools }}
+                                        @else
+                                            No data available
+                                        @endif
                                     </h5>
-                                    <p class="mb-0">
-                                        <span class="text-danger text-sm font-weight-bolder">60%</span>
-                                        since last year
-                                    </p>
                                 </div>
                             </div>
                             <div class="col-4 text-end">
                                 <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+{{--                                    school building--}}
+                                    <i class="ni ni-building text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -93,16 +97,18 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Challenges attempted</p>
                                     <h5 class="font-weight-bolder">
-                                        1400
+                                        @if(isset($challenge_attempts))
+                                            {{ $challenge_attempts }}
+                                        @else
+                                            No data available
+                                        @endif
                                     </h5>
-                                    <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+5%</span> since last year
-                                    </p>
                                 </div>
                             </div>
                             <div class="col-4 text-end">
                                 <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                                    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+{{--                                    icon for challenges attempted--}}
+                                    <i class="ni ni-chart-pie-35 text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
                         </div>
@@ -116,8 +122,8 @@
                     <div class="card-header pb-0 pt-3 bg-transparent">
                         <h6 class="text-capitalize">Student Participation Graph</h6>
                         <p class="text-sm mb-0">
-                            <!--<i class="fa fa-arrow-up text-success"></i>
-                            <span class="font-weight-bold">4% more</span> in 2021-->
+                            <i class="fa fa-arrow-up text-success"></i>
+                            <!--<span class="font-weight-bold">4% more</span> in 2021-->
                         </p>
                     </div>
                    <div class="card-body p-3">
@@ -181,141 +187,159 @@
                 <div class="card ">
                     <div class="card-header pb-0 p-3">
                         <div class="d-flex justify-content-between">
-                            <h6 class="mb-2">School Rankings In Districts</h6>
+                            <h6 class="mb-2">Challenges</h6>
                         </div>
                     </div>
                     <div class="table-responsive">
                         <table class="table align-items-center ">
                             <tbody>
                                 <tr>
-                                    <td class="w-30">
-                                        <div class="d-flex px-2 py-1 align-items-center">
-                                            <div>
-
-                                            </div>
-                                            <div class="ms-4">
-                                                <p class="text-xs font-weight-bold mb-0">District:</p>
-                                                <h6 class="text-sm mb-0">Kampala</h6>
-                                            </div>
-                                        </div>
+                                    <td>
+                                        <h6 class="text-sm mb-0">Challenge Name</h6>
                                     </td>
                                     <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Pupils:</p>
-                                            <h6 class="text-sm mb-0">25</h6>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Schools:</p>
-                                            <h6 class="text-sm mb-0">23</h6>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-sm">
-                                        <div class="col text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Achievers:</p>
-                                            <h6 class="text-sm mb-0">29.9%</h6>
-                                        </div>
+                                        <h6 class="text-sm mb-0">Attempts</h6>
                                     </td>
                                 </tr>
+                            @if(isset($challenges))
+                                @foreach($challenges as $challenge)
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div>
+                                                    <img src="{{ asset('images/cha.jpeg') }}" class="avatar avatar-sm rounded-circle me-2">
+                                                </div>
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ $challenge->challenge_name }}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="text-xs font-weight-bold">{{ $challenge->total_attempts }}</span>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
                                 <tr>
-                                    <td class="w-30">
-                                        <div class="d-flex px-2 py-1 align-items-center">
+                                    <td>
+                                        <div class="d-flex px-2 py-1">
                                             <div>
-
+                                                <img src="{{ asset('images/challenge.png') }}" class="avatar avatar-sm rounded-circle me-2">
                                             </div>
-                                            <div class="ms-4">
-                                                <p class="text-xs font-weight-bold mb-0">District:</p>
-                                                <h6 class="text-sm mb-0">Masaka</h6>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm">No data available</h6>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Pupils:</p>
-                                            <h6 class="text-sm mb-0">30</h6>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Schools:</p>
-                                            <h6 class="text-sm mb-0">10</h6>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-sm">
-                                        <div class="col text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Achievers:</p>
-                                            <h6 class="text-sm mb-0">40.22%</h6>
-                                        </div>
+                                        <span class="text-xs font-weight-bold">No data available</span>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="w-30">
-                                        <div class="d-flex px-2 py-1 align-items-center">
-                                            <div>
+                            @endif
 
-                                            </div>
-                                            <div class="ms-4">
-                                                <p class="text-xs font-weight-bold mb-0">District:</p>
-                                                <h6 class="text-sm mb-0">Kampala</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Pupils:</p>
-                                            <h6 class="text-sm mb-0">23</h6>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Schools:</p>
-                                            <h6 class="text-sm mb-0">12</h6>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-sm">
-                                        <div class="col text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Achievers:</p>
-                                            <h6 class="text-sm mb-0">23.44%</h6>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="w-30">
-                                        <div class="d-flex px-2 py-1 align-items-center">
-                                            <div>
 
-                                            </div>
-                                            <div class="ms-4">
-                                                <p class="text-xs font-weight-bold mb-0">District:</p>
-                                                <h6 class="text-sm mb-0">Rukungiri</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Pupils:</p>
-                                            <h6 class="text-sm mb-0">15</h6>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Schools:</p>
-                                            <h6 class="text-sm mb-0">143</h6>
-                                        </div>
-                                    </td>
-                                    <td class="align-middle text-sm">
-                                        <div class="col text-center">
-                                            <p class="text-xs font-weight-bold mb-0">Achievers:</p>
-                                            <h6 class="text-sm mb-0">32.14%</h6>
-                                        </div>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
+            <div class=" mt-4 col-lg-7 mb-lg-0 mb-4">
+                <div class="card ">
+                    <div class="card-header pb-0 p-3">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="mb-2">School Rankings per Challenge </h6>
+                        </div>
+                        <div class="d-flex justify-content-between">
+{{--                            a dropdown to select a challenge name--}}
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Select Challenge
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    @if(isset($challenges))
+                                        @foreach($challenges as $challenge)
+                                            <li><a class="dropdown-item"  href="#">{{ $challenge->challenge_name }}</a></li>
+                                        @endforeach
+                                    @else
+                                        <li><a class="dropdown-item" href="#">No data available</a></li>
+                                    @endif
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center ">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <h6 class="text-sm mb-0">School</h6>
+                                </td>
+                                <td>
+                                    <h6 class="text-sm mb-0">Average score</h6>
+                                </td>
+                                <td>
+                                    <h6 class="text-sm mb-0">Percentage</h6>
+                            </tr>
+                            @if(isset($rankings))
+                                @foreach($rankings as $ranking)
+
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div>
+                                                        <img src="{{ asset('images/cha.jpeg') }}" class="avatar avatar-sm rounded-circle me-2">
+                                                    </div>
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">{{ $ranking->challenge_name }}</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="text-xs font-weight-bold">{{ $ranking->average }}</span>
+                                            </td>
+                                            <td>
+                                                <span class="text-xs font-weight-bold">{{ $ranking->percentage }}</span>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+                            @else
+                                <tr>
+                                    <td>
+                                        <div class="d-flex px-2 py-1">
+                                            <div>
+                                                <img src="{{ asset('images/challenge.png') }}" class="avatar avatar-sm rounded-circle me-2">
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm">No data available</h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="text-xs font-weight-bold">No data available</span>
+                                    </td>
+                                    <td>
+                                        <span class="text-xs font-weight-bold">No data available</span>
+                                    </td>
+                                </tr>
+                            @endif
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+{{--            script to get the challenge name clicked in the dropdown and display the rankings from the rankingsarray for respective challenge--}}
+            <script>
+
+
+
+
+
+            </script>
+
             <div class="col-lg-5">
                 <div class="card">
                     <div class="card-header pb-0 p-3">
@@ -350,6 +374,7 @@
                                         <span class="text-xs">Twed Towers, <span class="font-weight-bold">Kampala
                                                 </span></span>
                                     </div>
+
                                 </div>
                                 <div class="d-flex">
                                     <button
