@@ -28,8 +28,8 @@ use App\Http\Controllers\ChallengeController;
 
 
 
+Route::get('/', [LoginController::class, 'welcome'])->middleware('guest')->name('welcome');
 
-Route::get('/', function () {return view ('auth.welcome');});
 // web.php
 Route::get('/dashboard', function () {
     return view('pages.dashboard');

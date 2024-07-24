@@ -20,4 +20,11 @@ class Answer extends Model
     {
         return $this->belongsTo(Challenge::class);
     }
+    public function scopeMostCorrectlyAnswered($query)
+    {
+        return $query->where('mark', 1)
+            ->groupBy('question_id')
+            ->orderByRaw('COUNT(*) DESC')
+            ->limit(1);
+    }
 }

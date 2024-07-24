@@ -22,10 +22,7 @@
                                 </div>
                             </div>
                            
-            <div class="col-12">
-                <a href="{{ route('schools-performance') }}" class="btn btn-primary">School Performance</a>
-            </div>
-        
+         
                             <div class="col-4 text-end">
                                 <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
                                     <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
@@ -35,6 +32,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                 <div class="card">
                     <div class="card-body p-3">
@@ -100,6 +98,7 @@
                                     </p>
                                 </div>
                             </div>
+                            
                             <div class="col-4 text-end">
                                 <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
                                     <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
@@ -110,6 +109,10 @@
                 </div>
             </div>
         </div>
+          <div class="col-12" style="text-align: center; margin-top: 20vh;">
+    <a href="{{ route('schools-performance') }}" class="btn btn-primary" style="display: inline-block;">CLICK HERE TO VIEW  SCHOOL PERFORMANCES</a>
+</div>
+        
         <div class="row mt-4">
             <div class="col-lg-7 mb-lg-0 mb-4">
                 <div class="card z-index-2 h-100">
