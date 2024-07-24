@@ -25,15 +25,14 @@ use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\ChallengeController;
 
+Route::get('/get-rankings/{challengeId}', 'RankingController@getRankingsByChallenge');
 
 
 
 Route::get('/', [LoginController::class, 'welcome'])->middleware('guest')->name('welcome');
 
 // web.php
-Route::get('/dashboard', function () {
-    return view('pages.dashboard');
-})->name('dashboard');
+Route::get('/dashboard',[LoginController::class, 'dashboard'])->name('dashboard');
 Route::get('/schools-performance', [PageController::class, 'vr'])->name('schools-performance');
 Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->name('login.perform');

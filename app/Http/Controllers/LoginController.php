@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Analytics;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -21,7 +22,7 @@ class LoginController extends Controller
      *
      * Renderable
      */
-    
+
     public function welcome(){
         return view ('auth.welcome');
      }
@@ -31,8 +32,16 @@ class LoginController extends Controller
     }
     public function dashboard()
 {
-    return view('pages.dashboard');
-}
+    $analytics = new Analytics();
+    $schools =$analytics->getSchoolsCount();
+    $challengess =$analytics->getChallengesCount();
+    $participants =$analytics->getParticipantsCount();
+    $challenge_attempts=$analytics->getChallengeAttempts();
+    $challenges=$analytics->getChallengeAttemptsByChallenge();
+    $rankings=$analytics->getSchoolsRankingPerChallengeUsingSchoolRegNo();
+
+
+    return view('pages.dashboard', compact('challengess','schools', 'participants','challenge_attempts','challenges'));}
 
 public function login(Request $request)
 {
@@ -67,7 +76,7 @@ public function login(Request $request)
     ]);
 }
 
-   
+
 
 
     public function logout(Request $request)

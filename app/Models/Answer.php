@@ -7,24 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
-    
+
     protected $table = 'participant_answer';
     protected $fillable = [
-        
+
         'question_id',
         'marks',
         'answer',];
 
-    
+
     public function challenge()
     {
         return $this->belongsTo(Challenge::class);
     }
-    public function scopeMostCorrectlyAnswered($query)
+    public function index()
     {
-        return $query->where('mark', 1)
-            ->groupBy('question_id')
-            ->orderByRaw('COUNT(*) DESC')
-            ->limit(1);
+        $mostCorrectlyAnsweredQuestion = Answer::mostCorrectlyAnswered()->first();
+
+        return view('pages.dashboard', compact('mostCorrectlyAnsweredQuestion'));
     }
 }
+
