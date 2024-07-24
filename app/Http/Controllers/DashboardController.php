@@ -39,4 +39,3 @@ Log::info('Most correctly answered question: ' . json_encode($mostCorrectlyAnswe
 }
 
 }
-
