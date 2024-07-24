@@ -22,26 +22,14 @@
                 <div class="nav-wrapper position-relative end-0">
                     <ul class="nav nav-pills nav-fill p-1" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link mb-0 px-0 py-1 active d-flex align-items-center justify-content-center "
-                               data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="true">
-                                <i class="ni ni-app"></i>
-                                <span class="ms-2">App</span>
-                            </a>
+                                <h1>MCMS</h1>
+
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center "
-                               data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
-                                <i class="ni ni-email-83"></i>
-                                <span class="ms-2">Messages</span>
-                            </a>
+                            <h3>Numbers don't lie!!</h3>
+
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center "
-                               data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
-                                <i class="ni ni-settings-gear-65"></i>
-                                <span class="ms-2">Settings</span>
-                            </a>
-                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -51,7 +39,7 @@
 <div id="alert">
     @include('components.alert')
 </div>
-<h1>Challenges</h1>
+
 <!-- Display success message if any -->
 @if(session('success'))
     <div class="alert alert-success">
@@ -60,39 +48,36 @@
 @endif
 
 <!-- Add a link to create a new challenge -->
-<a href="{{ route('challenges.create') }}" class="btn btn-primary mb-3">Create New Challenge</a>
 
 <!-- Check if there are any challenges -->
 @if($allChallenges->count() > 0)
-    <div class="card max-w-5xl mx-auto">
-        <div class="card-body">
+    <div class="card max-w-5xl mx-auto text-center m-4">
+        <a href="{{ route('challenges.create') }}" class="btn  btn-primary mb-3">Create New Challenge</a>
+
+        <h1>Challenges</h1>
+        <div class="card-body" >
             <div class="table-responsive">
-                <table class="table">
+                <table class="table ">
                     <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Description</th>
                         <th>Start Date</th>
                         <th>End Date</th>
                         <th>Wrong Answer</th>
                         <th>Blank Answer</th>
                         <th>Questions to Answer</th>
-                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($allChallenges as $challenge)
                         <tr>
                             <td>{{ $challenge->challenge_name }}</td>
-                            <td>{{ $challenge->challenge_description }}</td>
                             <td>{{ $challenge->challenge_start_date }}</td>
                             <td>{{ $challenge->challenge_end_date }}</td>
                             <td>{{ $challenge->wrong_answer_marks }}</td>
                             <td>{{ $challenge->blank_answer_marks }}</td>
                             <td>{{ $challenge->questions_to_answer }}</td>
-                            <td>
-                                <!-- Add action buttons here -->
-                            </td>
+
                         </tr>
                     @endforeach
                     </tbody>

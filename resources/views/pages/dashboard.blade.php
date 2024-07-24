@@ -254,7 +254,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     @if(isset($challenges))
                                         @foreach($challenges as $challenge)
-                                            <li><a class="dropdown-item" href="#">{{ $challenge->challenge_name }}</a></li>
+                                            <li><a class="dropdown-item"  href="#">{{ $challenge->challenge_name }}</a></li>
                                         @endforeach
                                     @else
                                         <li><a class="dropdown-item" href="#">No data available</a></li>
