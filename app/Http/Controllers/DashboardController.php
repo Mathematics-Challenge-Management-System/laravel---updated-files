@@ -1,28 +1,39 @@
 <?php
-
 namespace App\Http\Controllers;
-use App\Models\School;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\models\Participant_answer;
-use Illuminate\Support\Facades\Log;
 
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 class DashboardController extends Controller
 {
-    public function index()
-    {
-    $mostCorrectlyAnsweredQuestion = laravelll::table('participant_answer')
-        ->where('mark', 1)
-        ->groupBy('question_id')
-        ->orderByRaw('COUNT(*) DESC')
-        ->limit(1)
-        ->select('question_id', laravelll::raw('COUNT(*) as correct_answers'))
-        ->first();
-    Log::info('most correct'.$mostCorrectlyAnsweredQuestion);
+public function index()
+{
+$mostCorrectlyAnsweredQuestion = DB::table('question')
+->whereIn('question_id', function($query) {
+$query->select('question_id')
+->from(function($sub) {
+$sub->select('question_id', DB::raw('COUNT(answer)'))
+->from('participant_answer')
+->where('marks', '>', 0)
+->whereIn('participant_challenge_id', function($subQuery) {
+$subQuery->select('participant_challenge_id')
+->from('participant_challenge')
+->whereIn('challenge_id', function($innerQuery) {
+$innerQuery->select('challenge_id')
+->from('challenge')
+->where('challenge_name', '=', 'trees');
+});
+})
+->groupBy('question_id')
+->orderByRaw('COUNT(answer) DESC')
+->limit(1)
+->toSql();
+}, 't1');
+})
+->first();
 
-//        $mostCorrectlyAnsweredQuestion=90;
-        return view('pages.dashboard',$mostCorrectlyAnsweredQuestion);
-    }
+Log::info('Most correctly answered question: ' . json_encode($mostCorrectlyAnsweredQuestion));
 
+return view('pages.dashboard')->with('mostCorrectlyAnsweredQuestion', $mostCorrectlyAnsweredQuestion);
+}
 }
