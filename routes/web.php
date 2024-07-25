@@ -31,14 +31,12 @@ use App\Http\Controllers\ChallengeController;
 
 Route::get('/', function () {return view ('auth.welcome');});
 // web.php
-Route::get('/dashboard', function () {
-    return view('pages.dashboard');
-})->name('dashboard');
+Route::get('/dashboard',[LoginController::class, 'dashboard'] )->name('dashboard');
 Route::get('/schools-performance', [PageController::class, 'vr'])->name('schools-performance');
 Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->name('login.perform');
-
-
+Route::get('/schools-performance', [SchoolController::class, 'show'])->name('school-performance');
+Route::get('/schools/performance', 'SchoolController@bestPerformingSchools')->name('schools-performance');
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 	Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
 

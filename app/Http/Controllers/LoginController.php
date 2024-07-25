@@ -31,7 +31,17 @@ class LoginController extends Controller
     }
     public function dashboard()
 {
-    return view('pages.dashboard');
+    
+
+    $mostCorrectlyAnsweredQuestion = DB::table('participant_answer')
+        ->where('mark', 1)
+        ->groupBy('question_id')
+        ->orderByRaw('COUNT(*) DESC')
+        ->limit(1)
+        ->select('question_id', DB::raw('COUNT(*) as correct_answers'))
+        ->first();
+    Log::info('most correct: '. $mostCorrectlyAnsweredQuestion);
+    return view('pages.dashboard',['mostCorrectlyAnsweredQuestion' => $mostCorrectlyAnsweredQuestion]);
 }
 
 public function login(Request $request)

@@ -27,14 +27,15 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($bestPerformingSchools as $school)
-            <tr>
-                <td>{{ $school->school_name }}</td>
-                <td>{{ $school->school_regNo }}</td>
-                <td>{{ $school->school_district }}</td>
-                <td>{{ $school->total_score }}</td>
-            </tr>
-        @endforeach
+        <tr>
+    @foreach($bestPerformingSchools as $school)
+        {{ $school->school_name }}
+        {{ $school->school_regNo }}
+        {{ $school->school_district }}
+        {{ $school->total_score }}
+    @endforeach
+    <p>No schools found.</p>
+        </tr>
     </tbody>
 </table>
                         </p>

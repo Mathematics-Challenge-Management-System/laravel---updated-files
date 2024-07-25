@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\DB;
 
 class School extends Authenticatable
 {
@@ -42,24 +43,22 @@ return view('pages.schools-data', ['school_representative' => $school_representa
         'rep_password',
 
     ];
-<<<<<<< HEAD
-public function scopeBestPerforming($query)
+public function bestPerformingSchools($scoreThreshold = 50)
 {
-    return $query->select([
-        'schools.school_name',
-        'schools.school_regNo',
-        'schools.school_district',
-        laravelll::raw('SUM(participant_challenges.score) AS total_score'),
+     $query = DB::table('school_representative')
+    ->select([
+        'school_representative.school_name',
+        'school_representative.school_regNo',
+        'school_representative.school_district',
+        DB::table('SUM(participant_challenge.score) AS total_score'),
     ])
-    ->join('participants', 'schools.school_regNo', '=', 'participants.school_regNo')
-    ->join('participant_challenges', 'participants.id', '=', 'participant_challenges.participant_id')
-    ->groupBy('schools.id')
+    ->join('participant', 'school_representative.school_regNo', '=', 'participant.school_regNo')
+    ->join('participant_challenge', 'participant.id', '=', 'participant_challenge.participant_id')
+    ->groupBy('school_representative.school_regNo')
+    ->having('total_score', '>', $scoreThreshold)
     ->orderBy('total_score', 'DESC');
+    
     }
-=======
-// Fetch the data from the database
-
->>>>>>> f76dc70ebacc10093674dc78e0f9364404c0f40e
 
 
 }
