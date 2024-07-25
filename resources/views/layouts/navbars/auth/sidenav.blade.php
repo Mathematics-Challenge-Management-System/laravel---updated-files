@@ -63,3 +63,14 @@
                 </a>
             </li>
             
+            <li class="nav-item mt-auto">
+                <div class="text-center">
+                    <img src="/mathematicsimages/mathematics challenge image.jpg" alt="Bottom Image" class="img-fluid px-3">
+                </div>
+            </li>
+        </ul>
+            
+           
+</aside>
+
+
