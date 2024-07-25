@@ -24,7 +24,7 @@ class SchoolController extends Controller
             dd('No schools found');
         }else{
 
-        return view ('pages.schools-data',compact('school_representative'));
+        return view ('pages.school-management',compact('school_representative'));
     }
 }
     public function store(Request $request)

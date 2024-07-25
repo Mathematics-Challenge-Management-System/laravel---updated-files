@@ -54,10 +54,10 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
         Route::get('/profile-static', [PageController::class, 'school'])->name('profile-static');
         Route::get('/sign-in-static', [PageController::class, 'signin'])->name('sign-in-static');
-        Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
+        //Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
         Route::get('/pages/{page}', [PageController::class, 'index'])->name('page');
         Route::get('school', [ App\Http\Controllers\SchoolController::class, 'create'])->name('school');
-Route::get('/schools/display',[App\Http\Controllers\SchoolController::class, 'displaySchoolDetails'])->name('schools.display');
+Route::get('/school-management',[App\Http\Controllers\SchoolController::class, 'displaySchoolDetails'])->name('schools.display');
 Route::post('school', [ App\Http\Controllers\SchoolController::class, 'store'])->name('school.store');
 Route::get('/challenge-creation', [ChallengeController::class, 'create'])->name('challenges.create');
 Route::get('/challenge-index', [ChallengeController::class, 'index'])->name('challenges.index');
