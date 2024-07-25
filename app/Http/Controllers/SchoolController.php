@@ -25,7 +25,9 @@ class SchoolController extends Controller
         $school_representative=School::all();
 
         if($school_representative->isEmpty()){
+
             dd('No schools found');
+
         }else{
 
         return view ('pages.school-management',compact('school_representative'));
