@@ -1,88 +1,101 @@
 @extends('layouts.app',['class' => 'g-sidenav-show bg-gray-100'])
+@section('content')
+@include('layouts.navbars.auth.topnav', ['title' => 'Challenge Creation'])
 
+<div class="card shadow-lg mx-4 card-school-bottom">
+    <div class="card-body p-3">
+        <div class="row gx-4">
+            <div class="col-auto">
+                <div class="avatar avatar-xl position-relative">
+                    <img src="/images/pupil.jpg" alt="school_image" class="w-100 border-radius-lg shadow-sm">
+                </div>
+            </div>
+            <div class="col-auto my-auto">
+                <div class="h-100">
 
-  @include('layouts.navbars.auth.topnav', ['title' => 'Challenge Creation'])
+                    <p class="mb-0 font-weight-bold text-sm">
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Challenge List</title>
-     <style>
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+                <div class="nav-wrapper position-relative end-0">
+                    <ul class="nav nav-pills nav-fill p-1" role="tablist">
+                        <li class="nav-item">
+                                <h1>MCMS</h1>
 
-        table {
-            margin-left:280px;
-            border-collapse: collapse; 
-            width: 80%; 
-        }
-        
-        th, td {
-            border: 1px solid black; /
-            padding: 10px; 
-            text-align: 
-        }
-        
-        th {
-            background-color: #f0f0f0; 
-        }
-    </style>
-    
-</head>
-<body style="text-align:center;" >
-    <h1>Challenges</h1>
+                        </li>
+                        <li class="nav-item">
+                            <h3>Numbers don't lie!!</h3>
 
-    <!-- Display success message if any -->
-    <?php if(session('success')): ?>
-        <div class="alert alert-success">
-            <?php echo session('success'); ?>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
         </div>
-    <?php endif; ?>
+    </div>
+</div>
+<div id="alert">
+    @include('components.alert')
+</div>
 
-    <!-- Add a link to create a new challenge -->
-    <a href="<?php echo route('challenges.create'); ?>">Create New Challenge</a>
+<!-- Display success message if any -->
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 
-    <!-- Check if there are any challenges -->
-    <?php if($allChallenges->count() > 0): ?>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>description</th>
-                    <th>Start Date</th>
-                    <th>End date</th>
-                    <th>Wrong Answer</th>
-                    <th>Blank Answer</th>
-                    <th>Questions to answer</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach($allChallenges as $challenge): ?>
+<!-- Add a link to create a new challenge -->
+
+<!-- Check if there are any challenges -->
+@if($allChallenges->count() > 0)
+    <div class="card max-w-5xl mx-auto text-center m-4">
+        <a href="{{ route('challenges.create') }}" class="btn  btn-primary mb-3">Create New Challenge</a>
+
+        <h1>Challenges</h1>
+        <div class="card-body" >
+            <div class="table-responsive">
+                <table class="table ">
+                    <thead>
                     <tr>
-                        <td><?php echo $challenge->challenge_name; ?></td>
-                        <td><?php echo $challenge->challenge_description; ?></td>
-                        <td><?php echo $challenge->challenge_start_date; ?></td>
-                        <td><?php echo $challenge->challenge_end_date; ?></td>
-                        <td><?php echo $challenge->wrong_answer_marks;?></td>
-                        <td><?php echo  $challenge->blank_answer_marks;?></td>
-                        <td><?php echo $challenge->questions_to_answer;?></td>
-    
-                        <td>
-                            
-                            <!-- Add a delete form here if needed -->
-                        </td>
+                        <th>Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Wrong Answer</th>
+                        <th>Blank Answer</th>
+                        <th>Questions to Answer</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    <?php else: ?>
-        <p>No challenges found.</p>
-    <?php endif; ?>
+                    </thead>
+                    <tbody>
+                    @foreach($allChallenges as $challenge)
+                        <tr>
+                            <td>{{ $challenge->challenge_name }}</td>
+                            <td>{{ $challenge->challenge_start_date }}</td>
+                            <td>{{ $challenge->challenge_end_date }}</td>
+                            <td>{{ $challenge->wrong_answer_marks }}</td>
+                            <td>{{ $challenge->blank_answer_marks }}</td>
+                            <td>{{ $challenge->questions_to_answer }}</td>
 
-    
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+@else
+    <p>No challenges found.</p>
+@endif
+
+@include('layouts.footers.auth.footer')
+
+
 </body>
 <footer style="background-color: #f0f0f0; padding: 10px; text-align: center;">
     <p>&copy;Mathematics challenge Competition. Numbers Dont Lie</p>
 </footer>
 </html>
+@endsection
+
