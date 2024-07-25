@@ -15,29 +15,34 @@
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                <div class="nav-bar">
+            
 {{--                                       <img src="/images/math.jpg" alt="Logo" style="width:80px;height:80px;">--}}
 
-                    <div class="nav-links">
-                       <div> <a class="nav-link text-white font-weight-bold" href="{{ route('home') }}">MATHEMATICS CHALLENGE COMPETITION</a></div>
+                        <div> <img src="/images/math.jpg" alt="Logo" style="width:80px;height:80px;"></div>
+                        <div> <a class="nav-link text-white font-weight-bold" href="{{ route('home') }}">MATHEMATICS CHALLENGE COMPETITION</a></div>
                         <div class="get-started"> <a href="{{ route('schools-performance') }}"></a></div>
+                    
+        
+            
+                    <div class="nav-item d-flex align-items-center">
+                        <a href="{{ route('welcome') }}" class="btn btn-outline-light btn-sm">Back to Home</a>
                     </div>
-                </div>
-                <ul class="navbar-nav justify-content-end">
-                    <li class="nav-item d-flex align-items-center">
-                        @if (Auth::guard('admin')->check())
+                    <div class="nav-item d-flex align-items-center">
                         <form role="form" method="post" action="{{ route('logout') }}" id="logout-form">
                             @csrf
+                            @if (Auth::guard('admin')->check())
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                 class="nav-link text-white font-weight-bold px-0">
                                 <i class="fa fa-user me-sm-1"></i>
                                 <span class="d-sm-inline d-none">Log out</span>
+
                             </a>
+                            @endif
                         </form>
-                        @endif
-                    </li>
-                </ul>
+                        
+                    </div>
+                
             </div>
         </div>
     </div>

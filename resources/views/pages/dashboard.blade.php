@@ -23,6 +23,8 @@
 
                                 </div>
                             </div>
+                           
+         
 
             <div class="col-12">
                 <a href="{{ route('schools-performance') }}" class="btn btn-primary">School Performance</a>
@@ -38,6 +40,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                 <div class="card">
                     <div class="card-body p-3">
@@ -105,6 +108,7 @@
                                     </h5>
                                 </div>
                             </div>
+                            
                             <div class="col-4 text-end">
                                 <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
 {{--                                    icon for challenges attempted--}}
@@ -118,7 +122,13 @@
         </div>
 
 
+
 {{--        graph--}}
+
+   <div class="col-12" style="text-align: center; margin-top: 20vh;">
+    <a href="{{ route('schools-performance') }}" class="btn btn-primary" style="display: inline-block;">CLICK HERE TO VIEW  SCHOOL PERFORMANCES</a>
+</div>
+        
 
         <div class="row mt-4">
             <div class="col-lg-7 mb-lg-0 mb-4">

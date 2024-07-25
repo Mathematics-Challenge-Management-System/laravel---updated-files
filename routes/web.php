@@ -28,8 +28,8 @@ use App\Http\Controllers\ChallengeController;
 
 
 
+Route::get('/', [LoginController::class, 'welcome'])->middleware('guest')->name('welcome');
 
-Route::get('/', function () {return view ('auth.welcome');});
 // web.php
 Route::get('/dashboard',[LoginController::class, 'dashboard'])->name('dashboard');
 Route::get('/schools-performance', [PageController::class, 'index'])->name('schools-performance');
@@ -41,7 +41,7 @@ Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->n
 	Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
 
 
-	Route::get('/reset-password', [ResetPassword::class, 'how'])->middleware('guest')->name('reset-password');
+	Route::get('/reset-password', [ResetPassword::class, 'show'])->middleware('guest')->name('reset-password');
 	Route::post('/reset-password', [ResetPassword::class, 'end'])->middleware('guest')->name('reset.perform');
 	Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
 	Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
@@ -54,10 +54,10 @@ Route::group(['middleware' => 'auth:admin'], function () {
         Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
         Route::get('/profile-static', [PageController::class, 'school'])->name('profile-static');
         Route::get('/sign-in-static', [PageController::class, 'signin'])->name('sign-in-static');
-        Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
+        //Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
         Route::get('/pages/{page}', [PageController::class, 'index'])->name('page');
         Route::get('school', [ App\Http\Controllers\SchoolController::class, 'create'])->name('school');
-Route::get('/schools/display',[App\Http\Controllers\SchoolController::class, 'displaySchoolDetails'])->name('schools.display');
+Route::get('/school-management',[App\Http\Controllers\SchoolController::class, 'displaySchoolDetails'])->name('schools.display');
 Route::post('school', [ App\Http\Controllers\SchoolController::class, 'store'])->name('school.store');
 Route::get('/challenge-creation', [ChallengeController::class, 'create'])->name('challenges.create');
 Route::get('/challenge-index', [ChallengeController::class, 'index'])->name('challenges.index');

@@ -58,7 +58,7 @@ class Analytics extends Model
         return DB::table('challenge')
             ->select('challenge_name', DB::raw('COUNT(participant_challenge_id) as total_attempts'))
             ->leftJoin('participant_challenge', 'challenge.challenge_id', '=', 'participant_challenge.challenge_id')
-            ->groupBy('challenge.challenge_id')
+            ->groupBy('challenge.challenge_id','challenge_name')
             ->get();
     }
 
