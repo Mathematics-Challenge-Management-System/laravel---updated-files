@@ -23,7 +23,7 @@
             </li>
             <li class="nav-item mt-3 d-flex align-items-center">
                 <div class="ps-4">
-        
+
                 </div>
                 <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0"></h6>
             </li>
@@ -58,13 +58,13 @@
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-bullet-list-67 text-dark text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Challenge Creation</span>  
+                    <span class="nav-link-text ms-1">Challenge Creation</span>
                 </a>
             </li>
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Pages</h6>
             </li>
-           
+
             <!--<li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'schools.display' ? 'active' : '' }}" href="{{ route('schools.display') }}">
                     <div
@@ -80,10 +80,10 @@
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-app text-info text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">schools-performance?</span>
+                    <span class="nav-link-text ms-1">Schools performance</span>
                 </a>
             </li>
-           
+
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
             </li>
             <li class="nav-item">

@@ -25,7 +25,6 @@ use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\ChallengeController;
 
-Route::get('/get-rankings/{challengeId}', 'RankingController@getRankingsByChallenge');
 
 
 
@@ -33,7 +32,7 @@ Route::get('/get-rankings/{challengeId}', 'RankingController@getRankingsByChalle
 Route::get('/', function () {return view ('auth.welcome');});
 // web.php
 Route::get('/dashboard',[LoginController::class, 'dashboard'])->name('dashboard');
-Route::get('/schools-performance', [PageController::class, 'vr'])->name('schools-performance');
+Route::get('/schools-performance', [PageController::class, 'index'])->name('schools-performance');
 Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->name('login.perform');
 
@@ -50,6 +49,7 @@ Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->n
 Route::group(['middleware' => 'auth:admin'], function () {
     // Admin routes here
     Route::get('/home', [LoginController::class, 'dashboard'])->name('home');
+    Route::post('/schools-performance', [PageController::class, 'view'])->name('schools-performance.show');
 
         Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
         Route::get('/profile-static', [PageController::class, 'school'])->name('profile-static');

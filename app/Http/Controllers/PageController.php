@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Analytics;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -10,20 +11,27 @@ class PageController extends Controller
      * Display all the static pages when authenticated
      *
      * @param string $page
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index(string $page)
+    public function index()
     {
-        if (view()->exists("pages.{$page}")) {
-            return view("pages.{$page}");
-        }
+        $analytics = new Analytics();
+        $challenges=$analytics->getChallenges();
 
-        return abort(404);
+       return view("pages.schools-performance", compact('challenges'));
     }
 
-    public function vr()
+    public function view(Request $request)
     {
-        return view("pages.schools-performance");
+        $analytics = new Analytics();
+        //read from form
+        $challengeName = $request->input('challenge_name');
+        $top5=$analytics->getTop5SchoolsPerChallenge($challengeName);
+        $bottom5=$analytics->getBottom5SchoolsPerChallenge($challengeName);
+        $challenges=$analytics->getChallenges();
+
+
+        return view("pages.schools-performance", compact('top5','bottom5','challengeName','challenges'));
     }
 
     public function rtl()
