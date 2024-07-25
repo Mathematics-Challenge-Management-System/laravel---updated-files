@@ -65,17 +65,34 @@ class ChallengeController extends Controller
         $questions = $request->file('question_document');
         $answers = $request->file('answer_document');
 
-        if ($questions && $answers) {
-            $questionDocumentPath = $questions->store('challenges', 'public');
-            $answerDocumentPath = $answers->store('challenges', 'public');
+        $questionDocumentPath = $questions->store('challenges', 'public');
+        $challenge->question_document = $questionDocumentPath;
 
-        }
+        // Store answer document
+        $answerDocumentPath = $answers->store('challenges', 'public');
+        $challenge->answer_document = $answerDocumentPath;
 
+
+        // Get the ID of the newly created challenge
+        $challengeId = $challenge->id;
+
+        // Process and import questions and answers
         DB::beginTransaction();
         try {
-            $questionImport = new QuestionImport($questions, $answers, $challenge->challenge_id);
-            // Assuming the QuestionImport handles the import logic and commits internally
+
+            $questionImport=new QuestionImport($questions,$answers,$challengeId);
+
+
+
+
+
             DB::commit();
+
+            // After successful import, check the count
+            $questionCount = Question::where('challenge_id', $challengeId)->count();
+
+            Log::info("After import: {$questionCount} questions and answers in database for challenge #{$challengeId}");
+
             return back()->with('success', 'Challenge created and questions and answers uploaded successfully!');
         } catch (\Exception $e) {
             DB::rollBack();

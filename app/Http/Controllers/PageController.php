@@ -17,8 +17,11 @@ class PageController extends Controller
     {
         $analytics = new Analytics();
         $challenges=$analytics->getChallenges();
+        $top5_general=$analytics->getTop5Schools();
+        $bottom5_general=$analytics->getBottom5Schools();
 
-       return view("pages.schools-performance", compact('challenges'));
+       return view("pages.schools-performance", compact('challenges','top5_general','bottom5_general'));
+
     }
 
     public function view(Request $request)
@@ -29,9 +32,11 @@ class PageController extends Controller
         $top5=$analytics->getTop5SchoolsPerChallenge($challengeName);
         $bottom5=$analytics->getBottom5SchoolsPerChallenge($challengeName);
         $challenges=$analytics->getChallenges();
+        $top5_general=$analytics->getTop5Schools();
+        $bottom5_general=$analytics->getBottom5Schools();
 
 
-        return view("pages.schools-performance", compact('top5','bottom5','challengeName','challenges'));
+        return view("pages.schools-performance", compact('top5','bottom5','challengeName','challenges','top5_general','bottom5_general'));
     }
 
     public function rtl()

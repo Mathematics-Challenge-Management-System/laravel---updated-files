@@ -199,6 +199,140 @@
             </div>
         </div>
         @endif
+    @if(isset($top5_general))
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header pb-0">
+                        <h3>Best performing schools Overall</h3>
+
+                    </div>
+
+                    <table class="table text-center align-items-center mb-0">
+                        <thead>
+                        <tr>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                School name</th>
+
+
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                District</th>
+
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                Average percentage score</th>
+
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($top5_general as $school)
+                            <tr>
+                                <td>
+
+
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm">{{$school['school_name']}}</h6>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm">{{$school['district']}}</h6>
+
+                                    </div>                                    <!--<p class="text-xs text-secondary mb-0">Organization</p>-->
+                                </td>
+                                <td class="align-middle text-center">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <span class="me-2 text-xs font-weight-bold">{{$school['average_percentage_score']}}%</span>
+
+                                    </div>
+                                </td>
+
+
+
+                            </tr>
+
+                        @endforeach
+                        </tbody>
+                    </table>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    @endif
+
+
+    @if(isset($bottom5_general))
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header pb-0">
+                        <h3>Worst performing schools Overall</h3>
+                    </div>
+
+                    <table class="table text-center align-items-center mb-0">
+                        <thead>
+                        <tr>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                School name</th>
+
+
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                District</th>
+
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                Average percentage score</th>
+
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($bottom5_general as $school)
+                            <tr>
+                                <td>
+
+
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm">{{$school['school_name']}}</h6>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm">{{$school['district']}}</h6>
+
+                                    </div>                                    <!--<p class="text-xs text-secondary mb-0">Organization</p>-->
+                                </td>
+                                <td class="align-middle text-center">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <span class="me-2 text-xs font-weight-bold">{{$school['average_percentage_score']}}%</span>
+
+                                    </div>
+                                </td>
+
+
+
+                            </tr>
+
+                        @endforeach
+                        </tbody>
+                    </table>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    @endif
+
 
 {{--        display options of the challenges--}}
 
