@@ -1,5 +1,6 @@
-<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
-    id="sidenav-main">
+<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4" 
+    id="sidenav-main" 
+    style="background-color: #FFA500;">
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
@@ -21,12 +22,14 @@
                     <span class="nav-link-text ms-1">Dashboard</span>
                 </a>
             </li>
+
             <li class="nav-item mt-3 d-flex align-items-center">
                 <div class="ps-4">
 
                 </div>
                 <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0"></h6>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'school' ? 'active' : '' }}" href="{{ route('school') }}">
                     <div
@@ -63,9 +66,11 @@
                 </a>
             </li>
 
+
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Pages</h6>
             </li>
+
 
             <!--<li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'schools.display' ? 'active' : '' }}" href="{{ route('schools.display') }}">
@@ -76,7 +81,7 @@
                     <span class="nav-link-text ms-1">Schools-Data</span>
                 </a>
             </li>-->
-            <li class="nav-item">
+            <!--<li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'schools-performance' ? 'active' : '' }}" href="{{ route('schools-performance') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -87,7 +92,7 @@
             </li>
 
           
-           
+
 
             
             <li class="nav-item mt-auto">
