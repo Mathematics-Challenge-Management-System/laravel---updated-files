@@ -32,20 +32,6 @@ class LoginController extends Controller
     }
     public function dashboard()
 {
-<<<<<<< HEAD
-    
-
-    $mostCorrectlyAnsweredQuestion = DB::table('participant_answer')
-        ->where('mark', 1)
-        ->groupBy('question_id')
-        ->orderByRaw('COUNT(*) DESC')
-        ->limit(1)
-        ->select('question_id', DB::raw('COUNT(*) as correct_answers'))
-        ->first();
-    Log::info('most correct: '. $mostCorrectlyAnsweredQuestion);
-    return view('pages.dashboard',['mostCorrectlyAnsweredQuestion' => $mostCorrectlyAnsweredQuestion]);
-}
-=======
     $analytics = new Analytics();
     $schools =$analytics->getSchoolsCount();
     $challengess =$analytics->getChallengesCount();
@@ -56,7 +42,6 @@ class LoginController extends Controller
 
 
     return view('pages.dashboard', compact('challengess','schools', 'participants','challenge_attempts','challenges'));}
->>>>>>> 552908c26abc96508bd6ffc57353b2826490491e
 
 public function login(Request $request)
 {

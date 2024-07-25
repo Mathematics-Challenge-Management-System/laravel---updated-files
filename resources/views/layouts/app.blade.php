@@ -29,7 +29,7 @@
 
     @auth
 
-        @if (in_array(request()->route()->getName(), ['schools.display', 'sign-up-static', 'login', 'register', 'recover-password', 'rtl', 'virtual-reality']))
+        @if (in_array(request()->route()->getName(), ['schools.display', 'sign-up-static', 'login', 'register', 'recover-password']))
 
             @yield('content')
         @else
