@@ -13,15 +13,21 @@ class SchoolController extends Controller
         return view('pages.school');
     }
 
-    public function show()
-    {
+        public function show()
+{
+    $school = new School();
+    $bestPerformingSchools =  $school->bestPerformingSchools(75);
 
-    }
+    return view('pages.school',['bestPerformingSchools'=> $bestPerformingSchools]);
+}
+
     public function displaySchoolDetails(){
         $school_representative=School::all();
 
         if($school_representative->isEmpty()){
+
             dd('No schools found');
+
         }else{
 
         return view ('pages.school-management',compact('school_representative'));
