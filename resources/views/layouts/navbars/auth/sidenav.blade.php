@@ -1,5 +1,6 @@
-<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
-    id="sidenav-main">
+<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4" 
+    id="sidenav-main" 
+    style="background-color: #FFA500;">
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
@@ -21,12 +22,7 @@
                     <span class="nav-link-text ms-1">Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item mt-3 d-flex align-items-center">
-                <div class="ps-4">
-                    <i class="fab fa-laravel" style="color: #f4645f;"></i>
-                </div>
-                <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0"></h6>
-            </li>
+            
             <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'school' ? 'active' : '' }}" href="{{ route('school') }}">
                     <div
@@ -61,10 +57,33 @@
                     <span class="nav-link-text ms-1">Challenge Creation</span>  
                 </a>
             </li>
-            <li class="nav-item mt-3">
+            <li class="nav-item">
+                <a class="nav-link {{ Route::currentRouteName() == 'schools-performance' ? 'active' : '' }}" href="{{ route('schools-performance') }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-app text-info text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">schools-performance?</span>
+                </a>
+            </li>
+            </ul>
+    </div>
+    <div class="sidenav-footer mx-3">
+        <img src="/mathematicsimages/mathematics challenge image.jpg" alt="Footer Image" style="width: 100%; max-width: 200px; display: block; margin: 20px auto;">
+    </div>
+</aside>
+           <!-- <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Pages</h6>
             </li>
-           
+            <li class="nav-item">
+                <a class="nav-link {{ Route::currentRouteName() == 'schools-performance' ? 'active' : '' }}" href="{{ route('schools-performance') }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-app text-info text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">schools-performance?</span>
+                </a>
+            </li>
             <!--<li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'schools.display' ? 'active' : '' }}" href="{{ route('schools.display') }}">
                     <div
@@ -74,7 +93,7 @@
                     <span class="nav-link-text ms-1">Schools-Data</span>
                 </a>
             </li>-->
-            <li class="nav-item">
+            <!--<li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'schools-performance' ? 'active' : '' }}" href="{{ route('schools-performance') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -86,17 +105,9 @@
            
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
             </li>
+            
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'profile-static' ? 'active' : '' }}" href="{{ route('profile-static') }}">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">school</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="{{ route('sign-in-static') }}">
+                <a class="nav-link " href="{{ route('schools.display') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
