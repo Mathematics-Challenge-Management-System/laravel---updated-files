@@ -5,7 +5,7 @@
     <div class="row mt-4 mx-4">
         <div class="col-12">
             <div class="alert alert-light" role="alert">
-                Making it easier for you <strong>to handle the competition</strong>. 
+                Making it easier for you <strong>to handle the competition</strong>.
                 <strong>
                     <a href="https://www.creative-tim.com/product/argon-dashboard-pro-laravel" target="_blank">
                         here
@@ -27,9 +27,7 @@
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Create Date</th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Action</th>
+
                                 </tr>
                             </thead>
                             <tbody>
