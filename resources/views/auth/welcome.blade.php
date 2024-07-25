@@ -149,6 +149,8 @@ body::after {
     <div class="header">THE</div>
         <div class="header">MATHEMATICS CHALLENGE COMPETITION</div>
         <div class="sub-header">NUMBERS DONT LIE!!.</div>
+         <div class="sub-header">  <img src="/images/math.jpg" alt="Logo" style="width:100px;height:100px;"></div>
+        
         
     </div>
 </body>

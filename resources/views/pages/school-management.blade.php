@@ -1,3 +1,4 @@
+
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 @include('layouts.navbars.auth.topnav', ['title' => 'Schools Information'])
 @section('content')
@@ -19,6 +20,7 @@
         background-color: orange; /* Replace with your desired color */
     }
 
+
         table {
             margin-left:0px;
             border-collapse: collapse; 
@@ -33,6 +35,7 @@
         }
         
         th {
+
             background-color: whitesmoke; 
         }
     </style>
@@ -41,6 +44,7 @@
     @if($school_representative->count() > 0)
         <table class="table table-bordered">
           <table style="display: table !important;">
+
             <thead>
                 <tr>
                     <th>School Name</th>
@@ -91,3 +95,4 @@
     }
 </style>
 @endpush
+
