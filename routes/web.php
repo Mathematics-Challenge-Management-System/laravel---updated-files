@@ -42,7 +42,7 @@ Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->n
 	Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
 
 
-	Route::get('/reset-password', [ResetPassword::class, 'how'])->middleware('guest')->name('reset-password');
+	Route::get('/reset-password', [ResetPassword::class, 'show'])->middleware('guest')->name('reset-password');
 	Route::post('/reset-password', [ResetPassword::class, 'end'])->middleware('guest')->name('reset.perform');
 	Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
 	Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
