@@ -15,7 +15,29 @@
                     <div class="h-100">
 
                         <p class="mb-0 font-weight-bold text-sm">
+<h1>Best Performing Schools</h1>
 
+<table>
+    <thead>
+        <tr>
+            <th>School Name</th>
+            <th>School Reg No</th>
+            <th>School District</th>
+            <th>Total Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+    @foreach($bestPerformingSchools as $school)
+        {{ $school->school_name }}
+        {{ $school->school_regNo }}
+        {{ $school->school_district }}
+        {{ $school->total_score }}
+    @endforeach
+    <p>No schools found.</p>
+        </tr>
+    </tbody>
+</table>
                         </p>
                     </div>
                 </div>

@@ -31,12 +31,17 @@ use App\Http\Controllers\ChallengeController;
 Route::get('/', [LoginController::class, 'welcome'])->middleware('guest')->name('welcome');
 
 // web.php
+<<<<<<< HEAD
+Route::get('/dashboard',[LoginController::class, 'dashboard'] )->name('dashboard');
+Route::get('/schools-performance', [PageController::class, 'vr'])->name('schools-performance');
+=======
 Route::get('/dashboard',[LoginController::class, 'dashboard'])->name('dashboard');
 Route::get('/schools-performance', [PageController::class, 'index'])->name('schools-performance');
+>>>>>>> 552908c26abc96508bd6ffc57353b2826490491e
 Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->name('login.perform');
-
-
+Route::get('/schools-performance', [SchoolController::class, 'show'])->name('school-performance');
+Route::get('/schools/performance', 'SchoolController@bestPerformingSchools')->name('schools-performance');
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 	Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
 

@@ -13,10 +13,14 @@ class SchoolController extends Controller
         return view('pages.school');
     }
 
-    public function show()
-    {
+        public function show()
+{
+    $school = new School();
+    $bestPerformingSchools =  $school->bestPerformingSchools(75);
 
-    }
+    return view('pages.school',['bestPerformingSchools'=> $bestPerformingSchools]);
+}
+
     public function displaySchoolDetails(){
         $school_representative=School::all();
 

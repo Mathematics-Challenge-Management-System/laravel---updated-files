@@ -21,6 +21,12 @@
                                                 @endif
                                             </h5>
 
+<<<<<<< HEAD
+                                    <p class="mb-0">
+                                        <span class="text-success text-sm font-weight-bolder"></span>
+                                    </p>
+=======
+>>>>>>> 552908c26abc96508bd6ffc57353b2826490491e
                                 </div>
                             </div>
                            

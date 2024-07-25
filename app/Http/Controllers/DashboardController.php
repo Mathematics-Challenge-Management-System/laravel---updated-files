@@ -1,11 +1,31 @@
 <?php
+
 namespace App\Http\Controllers;
+
 
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 class DashboardController extends Controller
 {
+
+    public function index()
+    {
+        $mostCorrectlyAnsweredQuestion = DB::table('participant_answer')
+            ->where('mark', 1)
+            ->groupBy('question_id')
+            ->orderByRaw('COUNT(*) DESC')
+            ->limit(1)
+            ->select('question_id', DB::raw('COUNT(*) as correct_answers'))
+            ->first();
+
+        Log::info('most correct: '. $mostCorrectlyAnsweredQuestion);
+
+        // Correct way to pass data to a view
+        return view('pages.dashboard', ['mostCorrectlyAnsweredQuestion' => $mostCorrectlyAnsweredQuestion]);
+    }
+}
+
 
    /* public function index()
     {
@@ -152,3 +172,4 @@ Log::info('Most correctly answered question: ' . json_encode($mostCorrectlyAnswe
 }
 
 }
+
