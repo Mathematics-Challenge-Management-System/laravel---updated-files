@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Page-Enter" content="revealTrans(Duration=2.0,Transition=?)">
+
     <title>Welcome Page</title>
     <style>
         body {
@@ -145,7 +147,7 @@ body::after {
     </div>
     <div class="container"style="color:white;">
     <div class="header">THE</div>
-        <div class="header">MATHEMATICS CHALLENGE COMPETITION</div>
+        <div class="header">MATHEMATICS CHALLENGE MANAGEMENT SYSTEM</div>
         <div class="sub-header">NUMBERS DONT LIE!!.</div>
          <div class="sub-header">  <img src="/images/math.jpg" alt="Logo" style="width:100px;height:100px;"></div>
         

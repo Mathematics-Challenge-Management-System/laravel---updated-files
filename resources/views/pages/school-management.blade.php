@@ -1,13 +1,25 @@
-@extends('layouts.app')
-@include('layouts.navbars.auth.topnav', ['title' => 'Schools-Information'])
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+@extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
+@include('layouts.navbars.auth.topnav', ['title' => 'Schools Information'])
+@section('content')
+@if($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<div class="container">
+    <h1>Schools</h1>
+    <style>
+        
     
-    <title>Schools List</title>
-     <style>
+        body {
+        background-color: orange; /* Replace with your desired color */
+    }
+
 
         table {
             margin-left:0px;
@@ -23,27 +35,16 @@
         }
         
         th {
-            background-color: coral; 
+
+            background-color: whitesmoke; 
         }
     </style>
-    
-</head>
-<body style="text-align:center;" >
-    <h1>Schools</h1>
+      <a href="{{ route('schools.display') }}">School Information</a>
 
-    <!-- Display success message if any -->
-    <?php if(session('success')): ?>
-        <div class="alert alert-success">
-            <?php echo session('success'); ?>
-        </div>
-    <?php endif; ?>
+    @if($school_representative->count() > 0)
+        <table class="table table-bordered">
+          <table style="display: table !important;">
 
-    <!-- Add a link to create a new challenge -->
-    <a href="<?php echo route('schools.display'); ?>">School Information</a>
-
-    <!-- Check if there are any challenges -->
-    <?php if($school_representative->count() > 0): ?>
-        <table>
             <thead>
                 <tr>
                     <th>School Name</th>
@@ -53,39 +54,45 @@
                     <th>Representative Firstname</th>
                     <th>Representative Lastname</th>
                     <th>Representative Email</th>
-                    <th>representative password</th>
+                    <th>Representative Password</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($school_representative as $school): ?>
+                @foreach($school_representative as $school)
                     <tr>
-                        <td><?php echo $school->school_name; ?></td>
-                        <td><?php echo $school->school_district; ?></td>
-                        <td><?php echo $school->school_regNo; ?></td>
-                        <td><?php echo $school->school_phone; ?></td>
-                        <td><?php echo $school->rep_name; ?></td>
-                        <td><?php echo $school->rep_username;?></td>
-                        <td><?php echo  $school->rep_email;?></td>
-                        <td><?php echo $school->rep_password; ?></td>
-                        
-    
-                        <td>
-                            
-                            <!-- Add a delete form here if needed -->
-                        </td>
+                        <td>{{ $school->school_name }}</td>
+                        <td>{{ $school->school_district }}</td>
+                        <td>{{ $school->school_regNo}}</td>
+                        <td>{{ $school->school_phone }}</td>
+                        <td>{{ $school->rep_name }}</td>
+                        <td>{{ $school->rep_username }}</td>
+                        <td>{{ $school->rep_email }}</td>
+                        <td>{{ $school->rep_password }}</td>
                     </tr>
-                <?php endforeach; ?>
+                @endforeach
             </tbody>
+            </table>
         </table>
-    <?php else: ?>
-        <p>No challenges found.</p>
-    <?php endif; ?>
+    @else
+        <p>No schools found.</p>
+    @endif
+</div>
+@endsection
 
-    
-</body>
-<footer style="background-color: #f0f0f0; padding: 10px; text-align:centre;">
-    <p>&copy;Mathematics challenge Competition. Numbers Dont Lie</p>
-</footer>
-</html>
-
+@push('styles')
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: left;
+    }
+    th {
+        background-color: coral;
+    }
+</style>
+@endpush
 
